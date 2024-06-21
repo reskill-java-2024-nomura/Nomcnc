@@ -44,19 +44,9 @@ public class Customer {
 	}
 
 	public Customer(Integer id, String name, String postal, String address, String tel, String email,
-			LocalDate birthday,
-			LocalDate registerDate, LocalDate withdrawDate, String password) {
-		super();
+			LocalDate birthday, LocalDate registerDate, LocalDate withdrawDate, String password) {
+		this(name, postal, address, tel, email, birthday, registerDate, withdrawDate, password);
 		this.id = id;
-		this.name = name;
-		this.postal = postal;
-		this.address = address;
-		this.tel = tel;
-		this.email = email;
-		this.birthday = birthday;
-		this.registerDate = registerDate;
-		this.withdrawDate = withdrawDate;
-		this.password = password;
 	}
 
 	public Integer getId() {

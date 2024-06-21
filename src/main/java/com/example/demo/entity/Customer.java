@@ -58,12 +58,6 @@ public class Customer {
 		this.password = password;
 	}
 
-	public Customer(Integer id, String name, String postal, String address, String tel, String email, LocalDate birthday,
-			LocalDate registerDate, LocalDate withdrawDate, String password) {
-		this(name, postal, address, tel, email, birthday, registerDate, withdrawDate, password);
-		this.id = id;
-	}
-
 	public Integer getId() {
 		return id;
 	}

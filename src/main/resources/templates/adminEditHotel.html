@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>宿詳細</title>
+</head>
+<body>
+<h1>宿詳細</h1>
+<table border="1">
+	<tr>
+			<th>ID</th>
+			<th>宿名</th>
+			<th>カテゴリーID</th>
+			<th>住所</th>
+			<th>チェックイン時間</th>
+			<th>チェックアウト時間</th>
+			<th>削除</th>
+	</tr>
+	<tr>
+			<td th:text="${hotel.id}"></td>
+			<td th:text="${hotel.name}"></td>
+			<td th:text="${hotel.categoryId}"></td>
+			<td th:text="${hotel.address}"></td>
+			<td th:text="${hotel.checkinTime}"></td>
+			<td th:text="${hotel.checkoutTime}"></td>
+			<td>
+				<form th:action="@{/admin/hotels/{hotelId}/delete(hotelId=${hotel.id})}" method="get">
+			</td>
+	</tr>
+</table>
+
+<h2>プラン一覧</h2>
+</body>
+</html>

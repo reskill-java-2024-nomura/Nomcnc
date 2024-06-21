@@ -48,7 +48,15 @@ public class AdminHotelController {
 	public String show(@PathVariable("id") Integer id, Model model) {
 		Hotel hotel = hotelRepository.findById(id).get();
 		model.addAttribute(hotel);
-		return "editHotel";
+		return "adminEditHotel";
+	}
+
+	//削除処理
+	@PostMapping("/admin/hotels/{id}/delete")
+	public String delete(
+			@PathVariable("id") Integer id) {
+		hotelRepository.deleteById(id);
+		return "redirect:/admin/hotels";
 	}
 
 }

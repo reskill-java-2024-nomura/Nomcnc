@@ -16,7 +16,7 @@
 			<th>ID</th>
 			<th>名前</th>
 			<th>住所</th>
-			<th>詳細・編集</th>
+			<th>詳細</th>
 			<th>削除</th>
 		</tr>
 		<tr th:each="hotel:${hotels}">
@@ -25,12 +25,12 @@
 			<td th:text="${hotel.address}"></td>
 		<td>
 			<form th:action="@{/admin/hotels/{hotelId}(hotelId=${hotel.id})}" method="get">
-					<button>詳細・編集</button>
+					<button>詳細</button>
 			</form>
 		</td>
 		<td>
 			<form th:action="@{/admin/hotels/{hotelId}/delete(hotelId=${hotel.id})}" method="post">
-					<button>削除</button>
+				<button>削除</button>
 			</form>
 		</td>
 		</tr>

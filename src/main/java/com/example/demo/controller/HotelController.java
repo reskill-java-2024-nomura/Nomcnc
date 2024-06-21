@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,6 +19,9 @@ class HotelController {
 	@Autowired
 	CategoryRepository categoryRepository;
 
+	@Autowired
+	HotelRepository hotelRepository;
+
 	@GetMapping("/top")
 	public String top(
 			Model model) {
@@ -27,19 +31,19 @@ class HotelController {
 		return "top";
 	}
 
-	@GetMapping("/hotels")
+	@GetMapping("/hotels/{categoryName}/")
 	public String index(
-			@RequestParam(name = "categoryName", defaultValue = "") String categoryName,
+			@PathVariable("categoryName") String categoryName,
 			Model model) {
 
-		List<Category> hotelList = categoryRepository.findByName(categoryName);
+		List<Category> hotelList = hotelRepository.findByName(categoryName);
 		model.addAttribute("hotelList", hotelList);
 
 		return "hotelList";
 	}
 
 	@PostMapping("/hotels")
-	public String getCategory(
+	public String get(
 			@RequestParam(name = "categoryName", defaultValue = "") String categoryName,
 			Model model) {
 		model.addAttribute("categoryName", categoryName);

@@ -6,7 +6,7 @@
 </head>
 <body>
 トップページ
-<form method="get" action="/hotels">
+<form method="post" action="/hotels">
 	<div th:each="category:${categories}">
 <button name="categoryName">[[${category.name}]]</button>
 </div>

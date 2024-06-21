@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>顧客一覧</h1>
+	
+		<table border="1">
+			<tr>
+				<th>会員ID</th>
+				<th>名前</th>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th>電話番号</th>
+				<th>メールアドレス</th>
+				<th>生年月日</th>
+				<th>入会年月日</th>
+				<th>退会年月日</th>
+				<th>パスワード</th>
+				<th>編集</th>
+				<th>削除</th>
+			</tr>
+			<tr th:each="customer:${customers}">
+				<td>[[${customer.id}]]</td>
+				<td>[[${customer.name}]]</td>
+				<td>[[${customer.postal}]]</td>
+				<td>[[${customer.address}]]</td>
+				<td>[[${customer.tel}]]</td>
+				<td>[[${customer.email}]]</td>
+				<td>[[${customer.birthday}]]</td>
+				<td>[[${customer.registerDate}]]</td>
+				<td>[[${customer.withdrawDate}]]</td>
+				<td>[[${customer.password}]]</td>
+				<td>
+					<form th:action="@{/customers/{customerid}/edit(customerid=${customer.id})}" method="get">
+						<button>編集</button>
+					</form>
+				</td>
+				<td>
+				<form th:action="@{/customers/{customerid}/delete(customerid=${customer.id})}" method="post">
+					<button>削除</button>
+				</form>
+			</td>
+			</tr>
+		</table>
+</body>
+</html>

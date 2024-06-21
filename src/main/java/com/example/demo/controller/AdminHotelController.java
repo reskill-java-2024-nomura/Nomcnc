@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,7 +28,7 @@ public class AdminHotelController {
 	}
 
 	//宿新規登録画面の表示
-	@GetMapping("/admin/add")
+	@GetMapping("/admin/hotels/add")
 	public String create() {
 		return "addHotel";
 	}
@@ -40,6 +41,14 @@ public class AdminHotelController {
 		Hotel hotel = new Hotel(name, address);
 		hotelRepository.save(hotel);
 		return "redirect:/admin/hotels";
+	}
+
+	//宿詳細画面表示
+	@GetMapping("/admin/hotels/{id}")
+	public String show(@PathVariable("id") Integer id, Model model) {
+		Hotel hotel = hotelRepository.findById(id).get();
+		model.addAttribute(hotel);
+		return "editHotel";
 	}
 
 }

@@ -1,8 +1,8 @@
-INSERT INTO customers (id, name, postal, address, tel, email, birthday, register_date, withdraw_date, password) 
+INSERT INTO customers (name, postal, address, tel, email, birthday, register_date, withdraw_date, password) 
 VALUES
-('田中太郎', '156-9999', '東京都港区1-1-1', '000-0000-0000', 'nn@gmail.com', '1991-08-15', '2020-08-09', '2020-08-10', 'stgadbfvefva'),
-('山田花子', '845-9999', '北海道札幌市2-2-2', '4555-1035-9166', 'tt@outlook.jp', '1991-08-16', '2020-08-10', '2020-08-11', 'vdsfbaf'),
-('佐藤次郎', '120-5548', '東京都港区3-3-3', '155-946-5985', 'ww@nomura.co.jp', '1991-08-17', '2020-08-11', '2020-08-12', 'fvdfavdf');"
+('田中太郎', '156-9999', '東京都港区1-1-1', '000-0000-0000', 'nn@gmail.com', '1991-08-15', '2020-08-09', null, 'stgadbfvefva'),
+('山田花子', '845-9999', '北海道札幌市2-2-2', '4555-1035-9166', 'tt@outlook.jp', '1991-08-16', '2020-08-10', null, 'vdsfbaf'),
+('佐藤次郎', '120-5548', '東京都港区3-3-3', '155-946-5985', 'ww@nomura.co.jp', '1991-08-17', '2020-08-11', null, 'fvdfavdf');
 
 INSERT INTO categories (name)
 VALUES
@@ -45,7 +45,8 @@ VALUES
 
 INSERT INTO reservations (customer_id, plan_id, reservation_date, checkin_date, checkout_date, room_count, is_canceled, note)
 VALUES
-(1, 1, '2024-06-20', '2024-07-05', '2024-07-07', 1, 0, ''),
-(2, 4, '2024-07-05', '2024-07-20', '2024-07-22', 1, 1, ''),
-(2, 3, '2024-07-20', '2024-08-04', '2024-08-06', 1, 0, ''),
-(3, 1, '2024-08-04', '2024-08-19', '2024-08-21', 1, 0, '');
+(1, 1, '2024-06-20', '2024-07-05', '2024-07-07', 1, FALSE, ''),
+(2, 4, '2024-07-05', '2024-07-20', '2024-07-22', 1, TRUE, ''),
+(2, 3, '2024-07-20', '2024-08-04', '2024-08-06', 1, FALSE, ''),
+(3, 1, '2024-08-04', '2024-08-19', '2024-08-21', 1, FALSE, '');
+

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.Hotel;
 import com.example.demo.repository.CategoryRepository;
+import com.example.demo.repository.HotelRepository;
 
 @Controller
 class HotelController {
@@ -31,24 +31,25 @@ class HotelController {
 		return "top";
 	}
 
-	@GetMapping("/hotels/{categoryName}/")
-	public String index(
-			@PathVariable("categoryName") String categoryName,
+	@GetMapping("/hotels/{categoryId}")
+	public String getHotels(
+			@PathVariable("categoryId") Integer categoryId,
 			Model model) {
 
-		List<Category> hotelList = hotelRepository.findByName(categoryName);
-		model.addAttribute("hotelList", hotelList);
+		List<Hotel> hotels = hotelRepository.findByCategoryId(categoryId);
+		model.addAttribute("hotels", hotels);
 
 		return "hotelList";
 	}
 
-	@PostMapping("/hotels")
-	public String get(
-			@RequestParam(name = "categoryName", defaultValue = "") String categoryName,
+	@GetMapping("/hotels/details/{id}")
+	public String show(
+			@PathVariable("id") Integer id,
 			Model model) {
-		model.addAttribute("categoryName", categoryName);
+		Hotel hotel = hotelRepository.findById(id).get();
+		model.addAttribute("hotel", hotel);
 
-		return "hotelList";
+		return "hotelDetail";
 	}
 
 }

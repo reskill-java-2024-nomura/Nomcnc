@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title></title>
-</head>
-<body>
-<h1>一覧</h1>
-[[${categoryName}]]
 
-aaaa
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<h1>一覧</h1>
+	<table border="1">
+		<tr th:each="hotel:${hotels}">
+			<td th:text="${hotel.name}"></td>
+			<td><a href="@{/hotels/details/{id}(id=${hotel.id})}">詳細はこちら</a></td>
+		</tr>
+	</table>
 </body>
+
 </html>

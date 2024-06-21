@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title></title>
+	<meta charset="UTF-8">
+	<title></title>
 </head>
+
 <body>
-トップページ
-<form method="post" action="/hotels">
+	トップページ
 	<div th:each="category:${categories}">
-<button name="categoryName">[[${category.name}]]</button>
-</div>
-</form>
+		<form method="get" th:action="@{/hotels/{id}(id=${category.id})}">
+			<button>[[${category.name}]]</button>
+	</form>
+	</div>
 </body>
+
 </html>

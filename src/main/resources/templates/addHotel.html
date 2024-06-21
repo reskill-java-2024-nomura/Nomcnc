@@ -6,5 +6,20 @@
 </head>
 <body>
 <h1>宿新規登録</h1>
+	<form action="/admin/hotels/add" method="post">
+		<input type="text" name="name" placeholder="宿名"><br>
+ 		<select name="categoryId" placeholder="カテゴリー">
+   			<option value="1">ビジネスホテル</option>
+       		<option value="2">DVD</option>
+       		<option value="3">ゲーム</option>
+    	</select><br>
+		<input type="text" name="address" placeholder="住所"><br>
+		チェックイン時間
+		<input type="time" name="checkinTime" placeholder="チェックイン時間"><br>
+		チェックアウト時間
+		<input type="time" name="checkoutTime" placeholder="チェックアウト時間"><br>
+
+		<button>登録</button>
+	</form>
 </body>
 </html>

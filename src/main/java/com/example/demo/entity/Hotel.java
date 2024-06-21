@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.time.LocalTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +22,9 @@ public class Hotel {
 	private String name;
 	private String address;
 	@Column(name = "checkin_time")
-	private String checkinTime;
+	private LocalTime checkinTime;
 	@Column(name = "checkout_time")
-	private String checkoutTime;
+	private LocalTime checkoutTime;
 
 	//コンストラクタ
 	public Hotel() {
@@ -51,11 +53,11 @@ public class Hotel {
 		return address;
 	}
 
-	public String getCheckinTime() {
+	public LocalTime getCheckinTime() {
 		return checkinTime;
 	}
 
-	public String getCheckoutTime() {
+	public LocalTime getCheckoutTime() {
 		return checkoutTime;
 	}
 

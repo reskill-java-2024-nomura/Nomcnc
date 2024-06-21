@@ -56,9 +56,9 @@ public class AccountController {
 			@RequestParam("address") String address,
 			@RequestParam("tel") String tel,
 			@RequestParam("email") String email,
-			@RequestParam("birthday") String birthday,
-			@RequestParam("registerDate") String registerDate,
-			@RequestParam("withdrawDate") String withdrawDate,
+			@RequestParam("birthday") LocalDate birthday,
+			@RequestParam("registerDate") LocalDate registerDate,
+			@RequestParam("withdrawDate") LocalDate withdrawDate,
 			@RequestParam("password") String password) {
 		Customer customer = new Customer(name, postal, address, tel, email, birthday, registerDate, withdrawDate,
 				password);

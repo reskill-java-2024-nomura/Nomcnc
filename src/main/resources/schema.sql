@@ -49,10 +49,9 @@ room_count INTEGER,
 note TEXT
 );
 -- 予約テーブル
-CREATE TABLE reservation
+CREATE TABLE reservations
 (
 id SERIAL PRIMARY KEY,
-order_id INTEGER,
 customer_id INTEGER,
 plan_id INTEGER,
 reservation_date DATE,

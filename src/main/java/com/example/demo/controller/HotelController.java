@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Hotel;
+import com.example.demo.entity.Plan;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.HotelRepository;
 
 @Controller
 class HotelController {
+
+	@Autowired
+	Plan plan;
 
 	@Autowired
 	CategoryRepository categoryRepository;

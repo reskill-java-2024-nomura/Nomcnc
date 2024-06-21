@@ -13,11 +13,36 @@ public class Plan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer hotel_id;
+	@Column(name = "hotel_id")
+	private Integer hotelId;
 	private String name;
 	private Integer price;
-	@Column(name = "")
+	@Column(name = "room_count")
 	private Integer roomCount;
 	private String note;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public Integer getHotelId() {
+		return hotelId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public Integer getRoomCount() {
+		return roomCount;
+	}
+
+	public String getNote() {
+		return note;
+	}
 
 }

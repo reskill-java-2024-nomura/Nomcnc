@@ -14,9 +14,9 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	private Integer postal;
+	private String postal;
 	private String address;
-	private Integer tel;
+	private String tel;
 	private String email;
 	private String birthday;
 	@Column(name = "register_date")
@@ -24,6 +24,24 @@ public class Customer {
 	@Column(name = "withdraw_date")
 	private String withdrawDate;
 	private String password;
+
+	public Customer() {
+	}
+
+	public Customer(Integer id, String name, String postal, String address, String tel, String email, String birthday,
+			String registerDate, String withdrawDate, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.postal = postal;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.birthday = birthday;
+		this.registerDate = registerDate;
+		this.withdrawDate = withdrawDate;
+		this.password = password;
+	}
 
 	public Integer getId() {
 		return id;
@@ -41,11 +59,11 @@ public class Customer {
 		this.name = name;
 	}
 
-	public Integer getPostal() {
+	public String getPostal() {
 		return postal;
 	}
 
-	public void setPostal(Integer postal) {
+	public void setPostal(String postal) {
 		this.postal = postal;
 	}
 
@@ -57,11 +75,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public Integer getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(Integer tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 

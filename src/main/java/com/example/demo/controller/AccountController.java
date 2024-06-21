@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +25,7 @@ public class AccountController {
 	@Autowired
 	Account account;
 	@Autowired
-	CustomerRepository cutstomerRepository;
+	CustomerRepository customerRepository;
 
 	//ログイン
 	@GetMapping({ "/", "/login" })
@@ -31,21 +33,21 @@ public class AccountController {
 		return "login";
 	}
 
-	//	@PostMapping("/login")
-	//	public String login(
-	//			@RequestParam("email") String email,
-	//			@RequestParam("password") String password,
-	//			Model model) {
-	//		List<Customer> customers = cutstomerRepository.findByNameAndEmail(name, email);
-	//		account.setId(customers.get(0).getId());
-	//		account.setName(name);
-	//		account.setEmail(email);
-	//		if (customers.size() != 0) {
-	//			return "top";
-	//		} else {
-	//			return "redirect:/login";
-	//		}
-	//	}
+	@PostMapping("/login")
+	public String login(
+			@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			Model model) {
+		List<Customer> customers = customerRepository.findByEmailAndPassword(email, password);
+		if (customers.size() == 0) {
+			return "redirect:/login";
+		} else {
+			account.setId(customers.get(0).getId());
+			account.setName(email);
+			account.setEmail(password);
+			return "top";
+		}
+	}
 
 	//会員登録
 	@GetMapping("/signin")
@@ -61,6 +63,7 @@ public class AccountController {
 			@RequestParam("password") String password) {
 		Customer customer = new Customer(name, postal, address, tel, email, birthday, registerDate, withdrawDate,
 				password);
+		customerRepository.save(customer);
 		return "signUp";
 	}
 

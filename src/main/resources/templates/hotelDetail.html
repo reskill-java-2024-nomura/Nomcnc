@@ -15,12 +15,13 @@
 		<th>備考</th>
 		<th>予約</th>
 	</tr>
-	<tr>
-		<td>[[${}]]</td>
-		<td>[[${hotel.name}]]</td>
-		<td>[[${hotel.name}]]</td>
-		<td>[[${hotel.name}]]</td>
-		<td>[[${hotel.name}]]</td>		
+	<tr th:each="plan:${plans}">
+		<td>[[${plan.id}]]</td>
+		<td>[[${plan.name}]]</td>
+		<td>[[${plan.roomCount}]]</td>
+		<td>[[${plan.price}]]</td>
+		<td>[[${plan.note}]]</td>
+		<td><a th:href="@{/reservation/input/{id}(id=${plan.id})}"><button>予約</button></a></td>	
 	</tr>
 </table>
 </body>

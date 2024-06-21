@@ -10,17 +10,40 @@ public class AccountController {
 	//会員登録
 	@GetMapping("/signin")
 	public String showSignUp() {
-		return "login";
+		return "signUp";
 	}
 
 	@PostMapping("/signin")
-	public String login() {
+	public String signUp() {
 		return "signUp";
 	}
 
 	//ログイン
-	//会員情報の変更
-	//会員の退会
-	//会員マイページ(遷移まで)
+	@GetMapping({ "/", "/login" })
+	public String index() {
+		return "login";
+	}
 
+	@PostMapping("/login")
+	public String login() {
+		return "top";
+	}
+	//会員情報の変更
+
+	@PostMapping("mypage/customer/edit")
+	public String update() {
+		return "redirect:/mypage";
+	}
+
+	//会員の退会
+	@PostMapping("mypage/customer/delete")
+	public String delete() {
+		return "redirect:/";
+	}
+
+	//会員マイページ(遷移まで)
+	@GetMapping("/mypage")
+	public String mypageIndex() {
+		return "mypage";
+	}
 }

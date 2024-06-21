@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,21 +31,21 @@ public class AccountController {
 		return "login";
 	}
 
-	@PostMapping("/login")
-	public String login(
-			@RequestParam("email") String email,
-			@RequestParam("name") String name,
-			Model model) {
-		List<Customer> customers = cutstomerRepository.findByNameAndEmail(name, email);
-		account.setId(customers.get(0).getId());
-		account.setName(name);
-		account.setEmail(email);
-		if (customers.size() != 0) {
-			return "top";
-		} else {
-			return "redirect:/login";
-		}
-	}
+	//	@PostMapping("/login")
+	//	public String login(
+	//			@RequestParam("email") String email,
+	//			@RequestParam("password") String password,
+	//			Model model) {
+	//		List<Customer> customers = cutstomerRepository.findByNameAndEmail(name, email);
+	//		account.setId(customers.get(0).getId());
+	//		account.setName(name);
+	//		account.setEmail(email);
+	//		if (customers.size() != 0) {
+	//			return "top";
+	//		} else {
+	//			return "redirect:/login";
+	//		}
+	//	}
 
 	//会員登録
 	@GetMapping("/signin")
@@ -56,9 +55,9 @@ public class AccountController {
 			@RequestParam("address") String address,
 			@RequestParam("tel") String tel,
 			@RequestParam("email") String email,
-			@RequestParam("birthday") String birthday,
-			@RequestParam("registerDate") String registerDate,
-			@RequestParam("withdrawDate") String withdrawDate,
+			@RequestParam("birthday") LocalDate birthday,
+			@RequestParam("registerDate") LocalDate registerDate,
+			@RequestParam("withdrawDate") LocalDate withdrawDate,
 			@RequestParam("password") String password) {
 		Customer customer = new Customer(name, postal, address, tel, email, birthday, registerDate, withdrawDate,
 				password);

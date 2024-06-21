@@ -28,10 +28,8 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(Integer id, String name, String postal, String address, String tel, String email, String birthday,
+	public Customer(String name, String postal, String address, String tel, String email, String birthday,
 			String registerDate, String withdrawDate, String password) {
-		super();
-		this.id = id;
 		this.name = name;
 		this.postal = postal;
 		this.address = address;
@@ -41,6 +39,12 @@ public class Customer {
 		this.registerDate = registerDate;
 		this.withdrawDate = withdrawDate;
 		this.password = password;
+	}
+
+	public Customer(Integer id, String name, String postal, String address, String tel, String email, String birthday,
+			String registerDate, String withdrawDate, String password) {
+		this(name, postal, address, tel, email, birthday, registerDate, withdrawDate, password);
+		this.id = id;
 	}
 
 	public Integer getId() {

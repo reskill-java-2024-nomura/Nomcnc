@@ -30,9 +30,9 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(String name, String postal, String address, String tel, String email, String birthday,
-			String registerDate, String withdrawDate, String password) {
-    this.name = name;
+	public Customer(String name, String postal, String address, String tel, String email, LocalDate birthday,
+			LocalDate registerDate, LocalDate withdrawDate, String password) {
+    		this.name = name;
 		this.postal = postal;
 		this.address = address;
 		this.tel = tel;
@@ -58,8 +58,8 @@ public class Customer {
 		this.password = password;
 	}
 
-	public Customer(Integer id, String name, String postal, String address, String tel, String email, String birthday,
-			String registerDate, String withdrawDate, String password) {
+	public Customer(Integer id, String name, String postal, String address, String tel, String email, LocalDate birthday,
+			LocalDate registerDate, LocalDate withdrawDate, String password) {
 		this(name, postal, address, tel, email, birthday, registerDate, withdrawDate, password);
 		this.id = id;
 	}

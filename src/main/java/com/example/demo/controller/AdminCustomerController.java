@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,21 @@ public class AdminCustomerController {
 	}
 
 	@GetMapping("/admin/customers")
-	public String index(Model model) {
-		List<Customer> customerList = customerRepository.findAll();
+	public String index(
+			@RequestParam(name = "keyword", defaultValue = "") String keyword,
+			@RequestParam(name = "keywordphone", defaultValue = "") String keywordphone,
+			Model model) {
+		List<Customer> customerList = null;
+
+		if (keyword.length() > 0) {
+			customerList = customerRepository.findByNameContaining(keyword);
+		} else if (keywordphone.length() > 0) {
+			customerList = customerRepository.findByTelContaining(keywordphone);
+		} else {
+			customerList = customerRepository.findAll();
+		}
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("keywordphone", keywordphone);
 		model.addAttribute("customers", customerList);
 		return "adminCustomer";
 	}
@@ -37,7 +51,7 @@ public class AdminCustomerController {
 			Model model) {
 		Customer customer = customerRepository.findById(id).get();
 		model.addAttribute("customer", customer);
-		return "editUser";
+		return "editAdminCustomer";
 	}
 
 	@PostMapping("/admin/customers/{id}/edit")
@@ -48,13 +62,20 @@ public class AdminCustomerController {
 			@RequestParam(name = "address", defaultValue = "") String address,
 			@RequestParam(name = "tel", defaultValue = "") String tel,
 			@RequestParam(name = "email", defaultValue = "") String email,
-			@RequestParam(name = "birthday", defaultValue = "") String birthday,
-			@RequestParam(name = "registerDate", defaultValue = "") String registerDate,
-			@RequestParam(name = "withdrawDate", defaultValue = "") String withdrawDate,
+			@RequestParam(name = "birthday", defaultValue = "") LocalDate birthday,
+			@RequestParam(name = "registerDate", defaultValue = "") LocalDate registerDate,
+			@RequestParam(name = "withdrawDate", defaultValue = "") LocalDate withdrawDate,
 			@RequestParam(name = "password", defaultValue = "") String password) {
 		Customer customer = new Customer(id, name, postal, address, tel, email, birthday, registerDate, withdrawDate,
 				password);
 		customerRepository.save(customer);
-		return "redirect:/users";
+		return "redirect:/admin/customers";
 	}
+
+	@PostMapping("/admin/customers/{id}/delete")
+	public String delete(@PathVariable("id") Integer id) {
+		customerRepository.deleteById(id);
+		return "redirect:/admin/customers";
+	}
+
 }

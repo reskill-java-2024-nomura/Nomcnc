@@ -6,7 +6,17 @@
 </head>
 <body>
 	<h1>顧客一覧</h1>
-	
+	名前検索：
+	<form action="/admin/customers" method="get">
+		<input type="text" name="keyword" th:value="${keyword}">
+		<button>検索</button>
+	</form><br>
+	電話番号検索：
+	<form action="/admin/customers" method="get">
+		<input type="text" name="keywordphone" th:value="${keywordphone}">
+		<button>検索</button>
+	</form>
+	<br>
 		<table border="1">
 			<tr>
 				<th>会員ID</th>
@@ -34,12 +44,12 @@
 				<td>[[${customer.withdrawDate}]]</td>
 				<td>[[${customer.password}]]</td>
 				<td>
-					<form th:action="@{/customers/{customerid}/edit(customerid=${customer.id})}" method="get">
+					<form th:action="@{/admin/customers/{customerid}/edit(customerid=${customer.id})}" method="get">
 						<button>編集</button>
 					</form>
 				</td>
 				<td>
-				<form th:action="@{/customers/{customerid}/delete(customerid=${customer.id})}" method="post">
+				<form th:action="@{/admin/customers/{customerid}/delete(customerid=${customer.id})}" method="post">
 					<button>削除</button>
 				</form>
 			</td>

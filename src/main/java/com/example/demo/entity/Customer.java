@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,11 +20,11 @@ public class Customer {
 	private String address;
 	private String tel;
 	private String email;
-	private String birthday;
+	private LocalDate birthday;
 	@Column(name = "register_date")
-	private String registerDate;
+	private LocalDate registerDate;
 	@Column(name = "withdraw_date")
-	private String withdrawDate;
+	private LocalDate withdrawDate;
 	private String password;
 
 	public Customer() {
@@ -30,6 +32,21 @@ public class Customer {
 
 	public Customer(String name, String postal, String address, String tel, String email, String birthday,
 			String registerDate, String withdrawDate, String password) {
+    this.name = name;
+		this.postal = postal;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.birthday = birthday;
+		this.registerDate = registerDate;
+		this.withdrawDate = withdrawDate;
+		this.password = password; 
+}
+	public Customer(Integer id, String name, String postal, String address, String tel, String email,
+			LocalDate birthday,
+			LocalDate registerDate, LocalDate withdrawDate, String password) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.postal = postal;
 		this.address = address;
@@ -95,27 +112,27 @@ public class Customer {
 		this.email = email;
 	}
 
-	public String getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 
-	public String getRegisterDate() {
+	public LocalDate getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(String registerDate) {
+	public void setRegisterDate(LocalDate registerDate) {
 		this.registerDate = registerDate;
 	}
 
-	public String getWithdrawDate() {
+	public LocalDate getWithdrawDate() {
 		return withdrawDate;
 	}
 
-	public void setWithdrawDate(String withdrawDate) {
+	public void setWithdrawDate(LocalDate withdrawDate) {
 		this.withdrawDate = withdrawDate;
 	}
 

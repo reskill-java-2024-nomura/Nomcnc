@@ -49,7 +49,7 @@ public class Customer {
 		this.id = id;
 	}
 
-	public Integer getId() {
+  public Integer getId() {
 		return id;
 	}
 

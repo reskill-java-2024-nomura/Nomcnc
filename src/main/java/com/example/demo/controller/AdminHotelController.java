@@ -47,7 +47,9 @@ public class AdminHotelController {
 		//住所検索
 		else if (keywordAddress.length() > 0) {
 			hotels = hotelRepository.findByAddressContaining(keywordAddress);
-		} else if (categoryId != null) {
+		}
+		//カテゴリー検索
+		else if (categoryId != null) {
 			hotels = hotelRepository.findByCategoryId(categoryId);
 		}
 		//全検索

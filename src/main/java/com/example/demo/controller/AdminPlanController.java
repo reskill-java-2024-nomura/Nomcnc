@@ -47,6 +47,14 @@ public class AdminPlanController {
 		return "adminEditPlan";
 	}
 
+	//プラン削除処理
+	@PostMapping("/admin/plans/{id}/delete")
+	public String delete(
+			@PathVariable("id") Integer id) {
+		planRepository.deleteById(id);
+		return "redirect:/admin/hotels/{id}";
+	}
+
 	@PostMapping("/admin/plans/{id}/edit")
 	public String update(
 			@PathVariable("id") Integer id,

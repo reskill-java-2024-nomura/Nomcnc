@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS hotels;
 DROP TABLE IF EXISTS plans cascade;
 DROP TABLE IF EXISTS reservations cascade;
+DROP TABLE IF EXISTS reviews;
 
 -- 会員テーブル
 CREATE TABLE customers
@@ -73,3 +74,32 @@ select
 from
    reservations r
 join plans p on r.plan_id = p.id
+;
+-- 口コミテーブル
+CREATE TABLE reviews
+(
+	id SERIAL PRIMARY KEY,
+	customer_id INTEGER,
+	hotel_id INTEGER,
+	plan_id INTEGER,
+	user_age INTEGER,
+	stay_month INTEGER,
+	stay_days INTEGER,
+	point INTEGER,
+	review TEXT
+);
+-- 口コミビュー
+CREATE VIEW view_reviews as
+select
+	r.id,
+	r.hotel_id,
+	r.customer_id,
+	p.name as plan_name,
+	r.user_age,
+	r.stay_month,
+	r.stay_days,
+	r.point,
+	r.review
+FROM reviews r
+JOIN plans p on r.plan_id=p.id
+;	

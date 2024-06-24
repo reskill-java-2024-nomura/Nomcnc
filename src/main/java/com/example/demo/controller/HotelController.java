@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Hotel;
 import com.example.demo.entity.Plan;
+import com.example.demo.entity.ViewReview;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.HotelRepository;
 import com.example.demo.repository.PlanRepository;
+import com.example.demo.repository.ViewReviewRepository;
 
 @Controller
 class HotelController {
@@ -28,6 +30,9 @@ class HotelController {
 	@Autowired
 	HotelRepository hotelRepository;
 
+	@Autowired
+	ViewReviewRepository viewReviewRepository;
+
 	@GetMapping("/top")
 	public String top(
 			Model model) {
@@ -37,6 +42,7 @@ class HotelController {
 		return "top";
 	}
 
+	//ホテル一覧画面
 	@GetMapping("/hotels/{categoryId}")
 	public String getHotels(
 			@PathVariable("categoryId") Integer categoryId,
@@ -72,6 +78,7 @@ class HotelController {
 		return "hotelList";
 	}
 
+	//ホテル詳細画面
 	@GetMapping("/hotels/details/{id}")
 	public String show(
 			@PathVariable("id") Integer id,
@@ -81,6 +88,9 @@ class HotelController {
 
 		List<Plan> plans = planRepository.findByHotelId(id);
 		model.addAttribute("plans", plans);
+
+		List<ViewReview> reviews = viewReviewRepository.findByHotelId(id);
+		model.addAttribute("reviews", reviews);
 
 		return "hotelDetail";
 	}

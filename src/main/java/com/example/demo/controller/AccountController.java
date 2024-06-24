@@ -46,7 +46,7 @@ public class AccountController {
 			account.setId(customers.get(0).getId());
 			account.setName(email);
 			account.setEmail(password);
-			return "top";
+			return "redirect:/top";
 		}
 	}
 
@@ -65,7 +65,7 @@ public class AccountController {
 			@RequestParam("email") String email,
 			@RequestParam("birthday") LocalDate birthday,
 			@RequestParam("password") String password) {
-    
+
 		Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
 		customerRepository.save(customer);
 

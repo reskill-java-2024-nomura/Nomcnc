@@ -28,6 +28,7 @@ public class Reservation {
 	@Column(name = "room_count")
 	private Integer roomCount;
 	@Column(name = "is_canceled")
+	private Boolean isCanceled;
 	private String note;
 
 	public Reservation() {
@@ -35,13 +36,14 @@ public class Reservation {
 	}
 
 	public Reservation(Integer customerId, Integer planId, LocalDate reservationDate, LocalDate checkinDate,
-			LocalDate checkoutDate, Integer roomCount, String note) {
+			LocalDate checkoutDate, Integer roomCount, Boolean isCanceled, String note) {
 		this.customerId = customerId;
 		this.planId = planId;
 		this.reservationDate = reservationDate;
 		this.checkinDate = checkinDate;
 		this.checkoutDate = checkoutDate;
 		this.roomCount = roomCount;
+		this.isCanceled = isCanceled;
 		this.note = note;
 	}
 
@@ -107,6 +109,14 @@ public class Reservation {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public Boolean getIsCanceled() {
+		return isCanceled;
+	}
+
+	public void setIsCanceled(Boolean isCanceled) {
+		this.isCanceled = isCanceled;
 	}
 
 }

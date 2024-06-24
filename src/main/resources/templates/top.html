@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title></title>
 </head>
-
+<header th:replace="header"></header>
 <body>
 	トップページ
 	<div th:each="category:${categories}">
@@ -15,5 +15,5 @@
 	</div>
 	<a href="/mypage">マイページへ</a>
 </body>
-
+<footer th:replace="footer"></footer>
 </html>

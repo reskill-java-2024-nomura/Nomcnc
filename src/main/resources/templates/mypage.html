@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>signUp</title>
 </head>
+<header th:replace="header"></header>
 
 <body>
 	<h1>顧客情報編集</h1>
@@ -18,7 +19,6 @@
 		<input type="date" placeholder="誕生日" name="birthday" th:value="${customer.birthday}"><br>
 		<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}"><br>
 		<button>変更内容の保存</button>
-		
 	</form>
 	<a href="/reservations"><button>予約一覧へ</button></a>
 	<form action="/mypage/customer/delete" method="post">
@@ -36,5 +36,9 @@
 		}
 	</script>
 </body>
+
+
+<footer th:replace="footer">
+</footer>
 
 </html>

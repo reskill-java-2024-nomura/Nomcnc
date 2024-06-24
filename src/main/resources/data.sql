@@ -1,4 +1,4 @@
-INSERT INTO customers (name, postal, address, tel, email, birthday, register_date, withdraw_date, password) 
+INSERT INTO customers (name, postal, address, tel, email, birthday, register_date, withdraw_date, password)
 VALUES
 ('田中太郎', '156-9999', '東京都港区1-1-1', '000-0000-0000', 'nn@gmail.com', '1991-08-15', '2020-08-09', null, 'stgadbfvefva'),
 ('山田花子', '845-9999', '北海道札幌市2-2-2', '4555-1035-9166', 'tt@outlook.jp', '1991-08-16', '2020-08-10', null, 'vdsfbaf'),
@@ -30,7 +30,7 @@ VALUES
 (1,'シティホテルL','東京都渋谷区道玄坂5-5-5','16:00','10:00'),
 (3, 'ビジネスホテルM', '東京都豊島区池袋2-2-2', '17:00', '10:00'),
 (1,'シティホテルN','東京都江東区豊洲2-2-2','15:00','10:00'),
-(1,'シティホテルO','神奈川県横浜市西区高島1-1-1','15:00','10:00');
+(1,'シティホテルO','神奈川県横浜市西区高島1-1-1','15:00','10:00'),
 (1,'シティホテルP','神奈川県横浜市港北区篠原町1-1-1','15:00','10:00');
 
 INSERT INTO plans (hotel_id, name, price, room_count, note)

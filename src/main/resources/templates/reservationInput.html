@@ -21,7 +21,7 @@
 		</tr>
 	</table>
 	<p>お客様情報入力</p>
-	<form method="post" action="/reservation/confirm">
+	<form method="post" th:action="@{/reservation/confirm/{planId}(planId=${plan.id})}">
 		<table border="1">
 			<tr>
 				<td>お名前</td>

@@ -21,31 +21,31 @@
 		</tr>
 	</table>
 	<p>お客様情報入力</p>
-	<form method="post" action="/reservation/confirm">
+	<form method="post" th:action="@{/reservation/confirm/{planId}(planId=${plan.id})}">
 		<table border="1">
 			<tr>
 				<td>お名前</td>
-				<td><input name="name" type="text"></td>
+				<td><input name="name" type="hidden" th:value="${reservation.id}"></td>
 			</tr>
 			<tr>
 				<td>e-mail</td>
-				<td><input name="email" type="text"></td>
+				<td><input name="email" type="hidden" th:value="${reservation.planId}"></td>
 			</tr>
 			<tr>
 				<td>チェックイン日</td>
-				<td><input name="checkinDate" type="date"></td>
+				<td><input name="checkinDate" type="hidden" th:value="${reservation.checkinDate}"></td>
 			</tr>
 			<tr>
 				<td>チェックアウト日</td>
-				<td><input name="checkoutDate" type="date"></td>
+				<td><input name="checkoutDate" type="hidden" th:value="${reservation.checkoutDate}"></td>
 			</tr>
 			<tr>
 				<td>予約部屋数</td>
-				<td><input name="roomCount" type="number"></td>
+				<td><input name="roomCount" type="hidden" th:value="${reservation.roomCount}"></td>
 			</tr>
 			<tr>
 				<td>備考</td>
-				<td><input name="note" type="text"></td>
+				<td><input name="note" type="hidden" th:value="${reservation.note}"></td>
 			</tr>
 		</table>
 		<button>ご予約確認</button>

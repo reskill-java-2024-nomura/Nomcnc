@@ -17,10 +17,15 @@
 		<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}">
 		<input type="text" placeholder="誕生日" name="birthday" th:value="${customer.birthday}">
 		<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}">
-		<button>確認</button>
+		<button>変更</button>
 	</form>
 </body>
-<form action="/mypage/customer/delete" method="post">
-	<button>退会</button>	
+<form action="/reservations" method="get">
+	<button>予約一覧</button>
+
 </form>
+<form action="/mypage/customer/delete" method="post">
+	<button>退会</button>
+</form>
+
 </html>

@@ -34,4 +34,5 @@ public class AdminPlanController {
 		planRepository.save(plan);
 		return "redirect:/admin/hotels/{id}";
 	}
+
 }

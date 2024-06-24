@@ -6,6 +6,40 @@
 </head>
 <body>
 <h1>宿情報編集</h1>
-
+	<form th:action="@{/admin/hotels/{hotelId}/edit(hotelId = ${hotel.id})}" method="post">
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<td th:text="${hotel.id}"></td>
+			</tr>
+			<tr>
+				<th>カテゴリー</th>
+				<td>
+		<select name="categoryId" placeholder="カテゴリー名">
+			 <option th:value="0"></option>
+       		<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    	</select><br>
+       			</td>
+			</tr>
+			<tr>
+				<th>宿名</th>
+				<td><input type="text" name="name" th:value="${hotel.name}"></td>
+			</tr>
+			<tr>
+				<th>住所</th>
+				<td><input type="text" name="address" th:value="${hotel.address}"></td>
+			</tr>
+			
+			<tr>
+				<th>チェックイン時間</th>
+				<td><input type="time" name="checkinTime" th:value="${hotel.checkinTime}"></td>
+			</tr>
+			<tr>
+				<th>チェックアウト時間</th>
+				<td><input type="time" name="checkoutTime" th:value="${hotel.checkoutTime}"></td>
+			</tr>
+		</table>
+		<button>更新</button>
+	</form>
 </body>
 </html>

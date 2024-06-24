@@ -5,6 +5,8 @@
 <title>宿詳細</title>
 </head>
 <body>
+	
+<a href = "/admin/hotels">宿一覧に戻る</a>
 <h1>宿詳細</h1>
 <table border="1">
 	<tr>
@@ -24,8 +26,9 @@
 			<td th:text="${hotel.checkinTime}"></td>
 			<td th:text="${hotel.checkoutTime}"></td>
 			<td>
-				<form th:action="@{/admin/hotels/{hotelId}/delete(hotelId=${hotel.id})}" method="get">
+				<form th:action="@{/admin/hotels/{hotelId}/edit(hotelId=${hotel.id})}" method="get">
 					<button>編集</button>
+				</form>
 			</td>
 	</tr>
 </table>
@@ -57,7 +60,7 @@
 
 		</td>
 		<td>
-
+		<form action="@{/admin/hotels/${plan.id}/delete/)}" method="post">
 				<button>削除</button>
 
 		</td>

@@ -5,10 +5,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<input type="text" name="hotelId" th:value="${plan.hotelId}"><br>
-	<input type="text" name="name" th:value="${plan.name}"><br>
-	<input type="text" name="price" th:value="${plan.price}"><br>
-	<input type="text" name="roomCount" th:value="${plan.roomCount}"><br>
-	<input type="text" name="note" th:value="${plan.note}"><br>
+	<h1>プラン追加</h1>
+	<form action="/admin/plans/add" method="post">
+	名前： 
+	<input type="text" name="name"><br>
+	値段：
+	<input type="text" name="price"><br>
+	部屋数：
+	<input type="text" name="roomCount"><br>
+	備考：
+	<input type="text" name="note"><br>
+	<input type="hidden" name="hotelId">
+	<button>プラン追加</button>
+	</form>
 </body>
 </html>

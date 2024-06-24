@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>宿詳細</title>
+</head>
+<body>
+<h1>宿詳細</h1>
+<table border="1">
+	<tr>
+			<th>ID</th>
+			<th>宿名</th>
+			<th>カテゴリーID</th>
+			<th>住所</th>
+			<th>チェックイン時間</th>
+			<th>チェックアウト時間</th>
+			<th>編集</th>
+	</tr>
+	<tr>
+			<td th:text="${hotel.id}"></td>
+			<td th:text="${hotel.name}"></td>
+			<td th:text="${hotel.categoryId}"></td>
+			<td th:text="${hotel.address}"></td>
+			<td th:text="${hotel.checkinTime}"></td>
+			<td th:text="${hotel.checkoutTime}"></td>
+			<td>
+				<form th:action="@{/admin/hotels/{hotelId}/delete(hotelId=${hotel.id})}" method="get">
+					<button>編集</button>
+			</td>
+	</tr>
+</table>
+
+<h2>プラン一覧</h2>
+
+	<button>新規登録</button>
+
+
+<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>プラン名</th>
+			<th>金額</th>
+			<th>部屋数</th>
+			<th>備考</th>
+			<th>編集</th>
+			<th>削除</th>
+		</tr>
+		<tr th:each="plan:${plans}">
+			<td th:text="${plan.id}"></td>
+			<td th:text="${plan.name}"></td>
+			<td th:text="${plan.price}"></td>
+			<td th:text="${plan.roomCount}"></td>
+			<td th:text="${plan.note}"></td>
+		<td>
+	
+					<button>編集</button>
+
+		</td>
+		<td>
+
+				<button>削除</button>
+
+		</td>
+		</tr>
+	</table>
+
+
+
+
+</body>
+</html>

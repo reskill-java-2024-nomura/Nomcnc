@@ -8,20 +8,7 @@
 <header th:replace="header"></header>
 
 <body>
-
 	<h1>マイページ</h1>
-	<form action="/mypage/customer/edit" method="post"><br>
-		<input type="hidden" name="id" th:value="${customer.id}"><br>
-		<input type="text" placeholder="名前" name="name" th:value="${customer.name}"><br>
-		<input type="text" placeholder="郵便番号" name="postal" th:value="${customer.postal}"><br>
-		<input type="text" placeholder="住所" name="address" th:value="${customer.address}"><br>
-		<input type="text" placeholder="電話番号" name="tel" th:value="${customer.tel}"><br>
-		<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}"><br>
-		<input type="text" placeholder="誕生日" name="birthday" th:value="${customer.birthday}"><br>
-		<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}"><br>
-		<button>変更</button>
-
-		<h1>顧客情報編集</h1>
 		<form action="/mypage/customer/edit" method="post">
 			<input type="hidden" name="id" th:value="${customer.id}"><br>
 			<input type="text" placeholder="名前" name="name" th:value="${customer.name}"><br>
@@ -47,7 +34,6 @@
 				} else {
 					return false;
 				}
-			}
 		</script>
 </body>
 

@@ -46,4 +46,25 @@ public class AdminPlanController {
 		model.addAttribute("plan", plan);
 		return "adminEditPlan";
 	}
+
+	//プラン削除処理
+	@PostMapping("/admin/plans/{id}/delete")
+	public String delete(
+			@PathVariable("id") Integer id) {
+		planRepository.deleteById(id);
+		return "redirect:/admin/hotels/{id}";
+	}
+
+	@PostMapping("/admin/plans/{id}/edit")
+	public String update(
+			@PathVariable("id") Integer id,
+			@RequestParam(name = "hotelId", defaultValue = "") Integer hotelId,
+			@RequestParam(name = "name", defaultValue = "") String name,
+			@RequestParam(name = "price", defaultValue = "") Integer price,
+			@RequestParam(name = "roomCount", defaultValue = "") Integer roomCount,
+			@RequestParam(name = "note", defaultValue = "") String note) {
+		Plan plan = new Plan(id, hotelId, name, price, roomCount, note);
+		planRepository.save(plan);
+		return "redirect:/admin/hotels/" + hotelId;
+	}
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Plan;
 import com.example.demo.entity.Reservation;
+import com.example.demo.entity.ViewReservation;
 import com.example.demo.model.Account;
 import com.example.demo.repository.PlanRepository;
 import com.example.demo.repository.ReservationRepository;
+import com.example.demo.repository.ViewReservationRepository;
 
 @Controller
 public class ReservationController {
@@ -27,6 +30,9 @@ public class ReservationController {
 
 	@Autowired
 	ReservationRepository reservationRepository;
+
+	@Autowired
+	ViewReservationRepository viewReservationRepository;
 
 	@GetMapping("reservation/input/{planId}")
 	public String reserve(
@@ -77,6 +83,14 @@ public class ReservationController {
 		model.addAttribute("newReservation", newReservation);
 
 		return "reserved";
+	}
+
+	@GetMapping("/reservations")
+	public String getReserved(
+			Model model) {
+		List<ViewReservation> reservations = viewReservationRepository.findByCustomerId(account.getId());
+
+		return "reservedList";
 	}
 
 }

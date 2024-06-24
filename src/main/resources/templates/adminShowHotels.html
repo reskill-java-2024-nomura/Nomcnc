@@ -6,6 +6,17 @@
 </head>
 <body>
 <h1>宿一覧</h1>
+
+<form action="/admin/hotels" method="get">
+	<input type="text" name="keyword" placeholder="宿名" th:value="${keyword}">
+	<input type="text" name="keywordAddress" placeholder="住所" th:value="${keywordAddress}">
+	<select name="categoryId" placeholder="カテゴリー名">
+		<option th:value="0"></option>
+       	<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select>
+	<button>検索</button>
+</form>
+
 <form action="/admin/hotels/add" method="get">
 	<button>新規登録</button>
 </form>

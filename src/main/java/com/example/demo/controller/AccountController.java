@@ -40,8 +40,11 @@ public class AccountController {
 			@RequestParam("password") String password,
 			Model model) {
 		List<Customer> customers = customerRepository.findByEmailAndPassword(email, password);
+
 		if (customers.size() == 0) {
-			return "redirect:/login";
+			String error = "メールアドレスとパスワードの組み合わせが不正です";
+			model.addAttribute("error", error);
+			return "login";
 		} else {
 			account.setId(customers.get(0).getId());
 			account.setName(email);

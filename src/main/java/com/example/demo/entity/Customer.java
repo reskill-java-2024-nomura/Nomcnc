@@ -30,6 +30,19 @@ public class Customer {
 	public Customer() {
 	}
 
+	public Customer(String name, String postal, String address,
+			String tel, String email, LocalDate birthday, String password) {
+		this.name = name;
+		this.postal = postal;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.birthday = birthday;
+		registerDate = LocalDate.now();
+		withdrawDate = null;
+		this.password = password;
+	}
+
 	public Customer(String name, String postal, String address, String tel, String email, LocalDate birthday,
 			LocalDate registerDate, LocalDate withdrawDate, String password) {
 		this.name = name;
@@ -49,7 +62,7 @@ public class Customer {
 		this.id = id;
 	}
 
-  public Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 

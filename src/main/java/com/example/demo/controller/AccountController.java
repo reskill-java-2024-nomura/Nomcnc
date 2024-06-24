@@ -46,7 +46,7 @@ public class AccountController {
 			account.setId(customers.get(0).getId());
 			account.setName(email);
 			account.setEmail(password);
-			return "top";
+			return "redirect:/top";
 		}
 	}
 
@@ -58,6 +58,33 @@ public class AccountController {
 
 	@PostMapping("/signin")
 	public String signUp(
+			@RequestParam(name = "name", defaultValue = "") String name,
+			@RequestParam(name = "postal", defaultValue = "") String postal,
+			@RequestParam(name = "address", defaultValue = "0000") String address,
+			@RequestParam(name = "tel", defaultValue = "") String tel,
+			@RequestParam(name = "email", defaultValue = "") String email,
+			@RequestParam(name = "birthday", defaultValue = "") LocalDate birthday,
+			@RequestParam(name = "password", defaultValue = "himitu") String password) {
+		Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
+		customerRepository.save(customer);
+		return "redirect:/login";
+	}
+
+	//会員マイページ
+
+	@GetMapping("/mypage")
+	public String mypageIndex(
+			Model model) {
+		Customer customer = customerRepository.findById(account.getId()).get();
+		model.addAttribute(customer);
+		return "mypage";
+	}
+
+	//会員情報の変更
+
+	@PostMapping("/mypage/customer/edit")
+	public String edit(
+			@RequestParam("id") Integer id,
 			@RequestParam("name") String name,
 			@RequestParam("postal") String postal,
 			@RequestParam("address") String address,
@@ -65,27 +92,16 @@ public class AccountController {
 			@RequestParam("email") String email,
 			@RequestParam("birthday") LocalDate birthday,
 			@RequestParam("password") String password) {
-    
-		Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
+		Customer customer = customerRepository.findById(id).get();
+		customer.setName(name);
+		customer.setPostal(postal);
+		customer.setAddress(address);
+		customer.setTel(tel);
+		customer.setEmail(email);
+		customer.setBirthday(birthday);
+		customer.setPassword(password);
 		customerRepository.save(customer);
-
-		return "redirect:/signin";
-	}
-
-	//会員マイページ
-	@GetMapping("/mypage")
-	public String mypageIndex() {
-		return "mypage";
-	}
-
-	//会員情報の変更
-
-	@GetMapping("/mypage/customer/edit")
-	public String update(
-			Model model) {
-		Customer customer = customerRepository.findById(account.getId()).get();
-		model.addAttribute(customer);
-		return "editCustomer";
+		return "redirect:/mypage";
 	}
 
 	//会員の退会

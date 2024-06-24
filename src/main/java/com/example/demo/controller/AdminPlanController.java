@@ -46,4 +46,5 @@ public class AdminPlanController {
 		model.addAttribute("plan", plan);
 		return "adminEditPlan";
 	}
+
 }

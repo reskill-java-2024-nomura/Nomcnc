@@ -41,10 +41,13 @@ public class Hotel {
 		this.checkoutTime = checkoutTime;
 	}
 
-	public Hotel(String name, String address) {
+	public Hotel(Integer categoryId, String name, String address, LocalTime checkinTime, LocalTime checkoutTime) {
 		super();
+		this.categoryId = categoryId;
 		this.name = name;
 		this.address = address;
+		this.checkinTime = checkinTime;
+		this.checkoutTime = checkoutTime;
 	}
 
 	//ゲッター

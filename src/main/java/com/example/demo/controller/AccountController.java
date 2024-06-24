@@ -65,8 +65,10 @@ public class AccountController {
 			@RequestParam("email") String email,
 			@RequestParam("birthday") LocalDate birthday,
 			@RequestParam("password") String password) {
+    
 		Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
 		customerRepository.save(customer);
+
 		return "redirect:/signin";
 	}
 

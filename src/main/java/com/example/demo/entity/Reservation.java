@@ -19,7 +19,7 @@ public class Reservation {
 	private Integer customerId;
 	@Column(name = "plan_id")
 	private Integer planId;
-	@Column(name = "reservationd_date")
+	@Column(name = "reservation_date")
 	private LocalDate reservationDate;
 	@Column(name = "checkin_date")
 	private LocalDate checkinDate;

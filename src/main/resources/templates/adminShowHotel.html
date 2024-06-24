@@ -24,15 +24,16 @@
 			<td th:text="${hotel.checkinTime}"></td>
 			<td th:text="${hotel.checkoutTime}"></td>
 			<td>
-				<form th:action="@{/admin/hotels/{hotelId}/delete(hotelId=${hotel.id})}" method="get">
+				<form th:action="@{/admin/hotels/{hotelId}/edit(hotelId=${hotel.id})}" method="get">
 					<button>編集</button>
+				</form>
 			</td>
 	</tr>
 </table>
 
 <h2>プラン一覧</h2>
 
-	<button>新規登録</button>
+	<a th:href="@{/admin/hotels/{hotelId}/plans/add(hotelId=${hotel.id})}">プラン新規登録</a>
 
 
 <table border="1">
@@ -53,7 +54,9 @@
 			<td th:text="${plan.note}"></td>
 		<td>
 	
-					<button>編集</button>
+		<form th:action="@{/admin/plans/{planId}/edit(planId=${plan.id})}" method="get">
+			<button>編集</button>
+		</form>
 
 		</td>
 		<td>

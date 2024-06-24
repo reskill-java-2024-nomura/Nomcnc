@@ -12,13 +12,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Plan;
 import com.example.demo.entity.Reservation;
+import com.example.demo.model.Account;
 import com.example.demo.repository.PlanRepository;
+import com.example.demo.repository.ReservationRepository;
 
 @Controller
 public class ReservationController {
 
 	@Autowired
+	Account account;
+
+	@Autowired
 	PlanRepository planRepository;
+
+	@Autowired
+	ReservationRepository reservationRepository;
 
 	@GetMapping("reservation/input/{planId}")
 	public String reserve(
@@ -34,7 +42,6 @@ public class ReservationController {
 	@PostMapping("reservation/confirm/{planId}")
 	public String confirm(
 			@PathVariable("planId") Integer planId,
-			// @RequestParam("name") String name ログイン機能できたらアカウント情報から持ってくる,
 			@RequestParam("checkinDate") LocalDate checkinDate,
 			@RequestParam("checkoutDate") LocalDate checkoutDate,
 			@RequestParam("roomCount") Integer roomCount,
@@ -42,14 +49,34 @@ public class ReservationController {
 			Model model) {
 
 		LocalDate reservationDate = LocalDate.now();
-		Reservation reservation = new Reservation(1, planId, reservationDate, checkinDate, checkoutDate, roomCount,
-				note);
+		Reservation reservation = new Reservation(account.getId(), planId, reservationDate, checkinDate, checkoutDate,
+				roomCount, false, note);
 		model.addAttribute("reservation", reservation);
 
 		Plan plan = planRepository.findById(planId).get();
 		model.addAttribute("plan", plan);
 
 		return "reservationConfirm";
+	}
+
+	@PostMapping("/reserved/{planId}")
+	public String store(
+			@PathVariable("planId") Integer planId,
+			@RequestParam("checkinDate") LocalDate checkinDate,
+			@RequestParam("checkoutDate") LocalDate checkoutDate,
+			@RequestParam("roomCount") Integer roomCount,
+			@RequestParam("note") String note,
+			Model model) {
+
+		LocalDate reservationDate = LocalDate.now();
+		Reservation reservation = new Reservation(account.getId(), planId, reservationDate, checkinDate, checkoutDate,
+				roomCount, false, note);
+		reservationRepository.save(reservation);
+
+		Reservation newReservation = reservationRepository.findTopByOrderByIdDesc();
+		model.addAttribute("newReservation", newReservation);
+
+		return "reserved";
 	}
 
 }

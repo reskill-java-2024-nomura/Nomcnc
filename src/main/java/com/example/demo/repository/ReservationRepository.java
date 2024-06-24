@@ -6,4 +6,5 @@ import com.example.demo.entity.Reservation;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 
+	Reservation findTopByOrderByIdDesc();
 }

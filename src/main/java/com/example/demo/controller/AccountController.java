@@ -24,6 +24,7 @@ public class AccountController {
 
 	@Autowired
 	Account account;
+
 	@Autowired
 	CustomerRepository customerRepository;
 
@@ -51,24 +52,21 @@ public class AccountController {
 
 	//会員登録
 	@GetMapping("/signin")
-	public String showSignUp(
+	public String showSignUp() {
+		return "signUp";
+	}
+
+	@PostMapping("/signin")
+	public String signUp(
 			@RequestParam("name") String name,
 			@RequestParam("postal") String postal,
 			@RequestParam("address") String address,
 			@RequestParam("tel") String tel,
 			@RequestParam("email") String email,
 			@RequestParam("birthday") LocalDate birthday,
-			@RequestParam("registerDate") LocalDate registerDate,
-			@RequestParam("withdrawDate") LocalDate withdrawDate,
 			@RequestParam("password") String password) {
-		Customer customer = new Customer(name, postal, address, tel, email, birthday, registerDate, withdrawDate,
-				password);
+		Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
 		customerRepository.save(customer);
-		return "signUp";
-	}
-
-	@PostMapping("/signin")
-	public String signUp() {
 		return "redirect:/signin";
 	}
 
@@ -80,14 +78,18 @@ public class AccountController {
 
 	//会員情報の変更
 
-	@PostMapping("mypage/customer/edit")
-	public String update() {
-		return "redirect:/mypage";
+	@GetMapping("/mypage/customer/edit")
+	public String update(
+			Model model) {
+		Customer customer = customerRepository.findById(account.getId()).get();
+		model.addAttribute(customer);
+		return "editCustomer";
 	}
 
 	//会員の退会
 	@PostMapping("mypage/customer/delete")
 	public String delete() {
+		customerRepository.deleteById(account.getId());
 		return "redirect:/";
 	}
 }

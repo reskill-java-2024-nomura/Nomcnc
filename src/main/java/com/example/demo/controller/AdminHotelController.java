@@ -53,11 +53,10 @@ public class AdminHotelController {
 	@GetMapping("/admin/hotels/{id}")
 	public String show(
 			@PathVariable("id") Integer id,
-
 			Model model) {
 		//ホテル詳細情報取得
 		Hotel hotel = hotelRepository.findById(id).get();
-		model.addAttribute(hotel);
+		model.addAttribute("hotel", hotel);
 		//プラン一覧情報取得
 		List<Plan> plans = planrepository.findByHotelId(id);
 		model.addAttribute("plans", plans);

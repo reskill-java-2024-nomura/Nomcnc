@@ -17,14 +17,17 @@ public class AdminPlanController {
 	@Autowired
 	PlanRepository planRepository;
 
-	@GetMapping("/admin/plans/add")
-	public String create() {
+	@GetMapping("/admin/hotels/{hotelId}/plans/add")
+	public String create(
+			@PathVariable("hotelId") Integer hotelId,
+			Model model) {
+		model.addAttribute("hotelId", hotelId);
 		return "adminaddplan";
 	}
 
 	@PostMapping("/admin/plans/add")
 	public String store(
-			@PathVariable("hotelId") Integer hotelId,
+			@RequestParam(name = "hotelId", defaultValue = "") Integer hotelId,
 			@RequestParam(name = "name", defaultValue = "") String name,
 			@RequestParam(name = "price", defaultValue = "") Integer price,
 			@RequestParam(name = "roomCount", defaultValue = "") Integer roomCount,
@@ -32,6 +35,15 @@ public class AdminPlanController {
 			Model model) {
 		Plan plan = new Plan(hotelId, name, price, roomCount, note);
 		planRepository.save(plan);
-		return "redirect:/admin/hotels/{id}";
+		return "redirect:/admin/hotels/" + hotelId;
+	}
+
+	@GetMapping("/admin/plans/{id}/edit")
+	public String edit(
+			@PathVariable("id") Integer id,
+			Model model) {
+		Plan plan = planRepository.findById(id).get();
+		model.addAttribute("plan", plan);
+		return "adminEditPlan";
 	}
 }

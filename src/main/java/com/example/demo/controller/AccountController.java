@@ -51,24 +51,21 @@ public class AccountController {
 
 	//会員登録
 	@GetMapping("/signin")
-	public String showSignUp(
+	public String showSignUp() {
+		return "signUp";
+	}
+
+	@PostMapping("/signin")
+	public String signUp(
 			@RequestParam("name") String name,
 			@RequestParam("postal") String postal,
 			@RequestParam("address") String address,
 			@RequestParam("tel") String tel,
 			@RequestParam("email") String email,
 			@RequestParam("birthday") LocalDate birthday,
-			@RequestParam("registerDate") LocalDate registerDate,
-			@RequestParam("withdrawDate") LocalDate withdrawDate,
 			@RequestParam("password") String password) {
-		Customer customer = new Customer(name, postal, address, tel, email, birthday, registerDate, withdrawDate,
-				password);
-		customerRepository.save(customer);
-		return "signUp";
-	}
-
-	@PostMapping("/signin")
-	public String signUp() {
+		//	Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
+		//	customerRepository.save(customer);
 		return "redirect:/signin";
 	}
 

@@ -62,7 +62,7 @@
 
 		</td>
 		<td>
-		<form action="@{/admin/hotels/${plan.id}/delete/)}" method="post">
+		<form th:action ="@{/admin/plans/{planId}/delete(planId=${plan.id})}" method="post">
 				<button>削除</button>
 		</form>
 		</td>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Hotel;
@@ -39,13 +40,34 @@ class HotelController {
 	@GetMapping("/hotels/{categoryId}")
 	public String getHotels(
 			@PathVariable("categoryId") Integer categoryId,
+			@RequestParam(name = "keyword", defaultValue = "") String keyword,
+			@RequestParam(name = "keywordAddress", defaultValue = "") String keywordAddress,
 			Model model) {
 
 		Category category = categoryRepository.findById(categoryId).get();
 		model.addAttribute("category", category);
 
-		List<Hotel> hotels = hotelRepository.findByCategoryId(categoryId);
+		List<Hotel> hotels = null;
+		//宿名検索
+		if (keyword.length() > 0) {
+			hotels = hotelRepository.findByCategoryIdAndNameContaining(categoryId, keyword);
+		}
+		//住所検索
+		else if (keywordAddress.length() > 0) {
+			hotels = hotelRepository.findByCategoryIdAndAddressContaining(categoryId, keywordAddress);
+		}
+		//宿名＆住所検索
+		else if (keyword.length() > 0 && keywordAddress.length() > 0) {
+			hotels = hotelRepository.findByCategoryIdAndAddressContainingAndNameContaining(categoryId, keywordAddress,
+					keyword);
+		}
+		//カテゴリー内全検索
+		else {
+			hotels = hotelRepository.findByCategoryId(categoryId);
+		}
 		model.addAttribute("hotels", hotels);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("keywordAddress", keywordAddress);
 
 		return "hotelList";
 	}

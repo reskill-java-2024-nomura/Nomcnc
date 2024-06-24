@@ -10,18 +10,21 @@
 	<tr>
 		<td>ID</td>
 		<td>予約プラン</td>
+		<td>部屋数</td>
 		<td>予約日</td>
 		<td>チェックイン</td>
 		<td>チェックアウト</td>
-		<td>価格</td>
-		<td>詳細</td>
+		<td>合計価格</td>
+		<td>キャンセル</td>
 	</tr>
 	<tr th:each="reservation:${reservations}">
 		<td th:text="${reservation.id}"></td>
-		<td th:text="${reservation.id}"></td>
+		<td th:text="${reservation.planName}"></td>
+		<td th:text="${reservation.roomCount}"></td>
 		<td th:text="${reservation.reservationDate}"></td>
 		<td th:text="${reservation.checkinDate}"></td>
 		<td th:text="${reservation.checkoutDate}"></td>
+		<td th:text="${reservation.payment}"></td>
 		<td></td>
 	</tr>
 </table>

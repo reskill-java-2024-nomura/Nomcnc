@@ -5,52 +5,40 @@
 	<meta charset="UTF-8">
 	<title>signUp</title>
 </head>
+<header th:replace="header"></header>
 
 <body>
-	<h1>顧客情報編集</h1>
-	<form action="/mypage/customer/edit" method="post">
-		<input type="hidden" name="id" th:value="${customer.id}"><br>
-		<input type="text" placeholder="名前" name="name" th:value="${customer.name}"><br>
-		<input type="text" placeholder="郵便番号" name="postal" th:value="${customer.postal}"><br>
-		<input type="text" placeholder="住所" name="address" th:value="${customer.address}"><br>
-		<input type="text" placeholder="電話番号" name="tel" th:value="${customer.tel}"><br>
-		<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}"><br>
-		<input type="date" placeholder="誕生日" name="birthday" th:value="${customer.birthday}"><br>
-		<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}"><br>
-		<button>変更内容の保存</button>
-		<input type="hidden" name="id" th:value="${customer.id}">
-		<input type="text" placeholder="名前" name="name" th:value="${customer.name}">
-		<input type="text" placeholder="郵便番号" name="postal" th:value="${customer.postal}">
-		<input type="text" placeholder="住所" name="address" th:value="${customer.address}">
-		<input type="text" placeholder="電話番号" name="tel" th:value="${customer.tel}">
-		<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}">
-		<input type="text" placeholder="誕生日" name="birthday" th:value="${customer.birthday}">
-		<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}">
-		<button>変更</button>
-	</form>
-	<a href="/reservations"><button>予約一覧へ</button></a>
-	<form action="/mypage/customer/delete" method="post">
-		<button id="quit" onclick="return confirmQuit()">退会</button>
-	</form>
-	<script>
-		function confirmQuit() {
-			var message = "本当に退会しますか？";
-			var checked = confirm(message);
-			if (checked) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	</script>
+	<h1>マイページ</h1>
+		<form action="/mypage/customer/edit" method="post">
+			<input type="hidden" name="id" th:value="${customer.id}"><br>
+			<input type="text" placeholder="名前" name="name" th:value="${customer.name}"><br>
+			<input type="text" placeholder="郵便番号" name="postal" th:value="${customer.postal}"><br>
+			<input type="text" placeholder="住所" name="address" th:value="${customer.address}"><br>
+			<input type="text" placeholder="電話番号" name="tel" th:value="${customer.tel}"><br>
+			<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}"><br>
+			<input type="date" placeholder="誕生日" name="birthday" th:value="${customer.birthday}"><br>
+			<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}"><br>
+			<button>変更内容の保存</button>
+
+		</form>
+		<a href="/reservations"><button>予約一覧へ</button></a>
+		<form action="/mypage/customer/delete" method="post">
+			<button id="quit" onclick="return confirmQuit()">退会</button>
+		</form>
+		<script>
+			function confirmQuit() {
+				var message = "本当に退会しますか？";
+				var checked = confirm(message);
+				if (checked) {
+					return true;
+				} else {
+					return false;
+				}
+				}
+		</script>
+
+
+<footer th:replace="footer">
+</footer>
 </body>
-
-<form action="/reservations" method="get">
-	<button>予約一覧</button>
-
-</form>
-<form action="/mypage/customer/delete" method="post">
-	<button>退会</button>
-</form>
-
 </html>

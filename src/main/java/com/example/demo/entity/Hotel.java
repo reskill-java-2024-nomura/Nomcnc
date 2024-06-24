@@ -30,6 +30,17 @@ public class Hotel {
 	public Hotel() {
 	}
 
+	public Hotel(Integer id, Integer categoryId, String name, String address, LocalTime checkinTime,
+			LocalTime checkoutTime) {
+		super();
+		this.id = id;
+		this.categoryId = categoryId;
+		this.name = name;
+		this.address = address;
+		this.checkinTime = checkinTime;
+		this.checkoutTime = checkoutTime;
+	}
+
 	public Hotel(String name, String address) {
 		super();
 		this.name = name;

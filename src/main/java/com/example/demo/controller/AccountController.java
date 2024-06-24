@@ -47,10 +47,17 @@ public class AccountController {
 			return "login";
 		} else {
 			account.setId(customers.get(0).getId());
-			account.setName(email);
-			account.setEmail(password);
+			account.setName(customers.get(0).getName());
+			account.setEmail(customers.get(0).getEmail());
 			return "redirect:/top";
 		}
+	}
+
+	//ログアウト
+	@GetMapping("/logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/";
 	}
 
 	//会員登録
@@ -104,6 +111,8 @@ public class AccountController {
 		customer.setBirthday(birthday);
 		customer.setPassword(password);
 		customerRepository.save(customer);
+		account.setName(name);
+		account.setEmail(email);
 		return "redirect:/mypage";
 	}
 

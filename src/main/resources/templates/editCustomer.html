@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>signUp</title>
+</head>
+
+<body>
+	<h1>顧客情報編集</h1>
+	<form action="/signin" method="post">
+		<input type="text" placeholder="名前" name="name" th:value="${customer.name}">
+		<input type="text" placeholder="郵便番号" name="postal" th:value="${customer.postal}">
+		<input type="text" placeholder="住所" name="address" th:value="${customer.address}">
+		<input type="text" placeholder="電話番号" name="tel" th:value="${customer.tel}">
+		<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}">
+		<input type="text" placeholder="誕生日" name="birthday" th:value="${customer.birthday}">
+		<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}">
+		<button>確認</button>
+	</form>
+</body>
+
+</html>

@@ -113,7 +113,7 @@ public class AccountController {
 		customerRepository.save(customer);
 		account.setName(name);
 		account.setEmail(email);
-		return "redirect:/mypage";
+		return "redirect:/top";
 	}
 
 	//会員の退会

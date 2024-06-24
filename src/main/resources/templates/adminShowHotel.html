@@ -5,6 +5,8 @@
 <title>宿詳細</title>
 </head>
 <body>
+	
+<a href = "/admin/hotels">宿一覧に戻る</a>
 <h1>宿詳細</h1>
 <table border="1">
 	<tr>
@@ -60,9 +62,9 @@
 
 		</td>
 		<td>
-
+		<form th:action ="@{/admin/plans/{planId}/delete(planId=${plan.id})}" method="post">
 				<button>削除</button>
-
+		</form>
 		</td>
 		</tr>
 	</table>

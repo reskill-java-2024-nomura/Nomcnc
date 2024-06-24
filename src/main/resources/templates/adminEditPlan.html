@@ -5,6 +5,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	aaa
+	<h1>プラン更新</h1>
+		<form th:action="@{/admin/plans/{planId}/edit(planId=${plan.id})}" method="post">
+		<table border="1">
+			<tr>
+				<th>プランID</th>
+				<td>[[${plan.id}]]</td>
+			</tr>
+			<tr>
+				<th>プラン名</th>
+				<td><input type="text" name="name" th:value="${plan.name}"></td>
+			</tr>
+			<tr>
+				<th>金額</th>
+				<td><input type="text" name="price" th:value="${plan.price}"></td>
+			</tr>
+			<tr>
+				<th>部屋数</th>
+				<td><input type="text" name="roomCount" th:value="${plan.roomCount}"></td>
+			</tr>
+			<tr>
+				<th>備考</th>
+				<td><input type="text" name="note" th:value="${plan.note}"></td>
+			</tr>
+			<input type="hidden" name="hotelId" th:value="${plan.hotelId}">
+		</table>
+		<button>更新</button>
+		</form>
 </body>
 </html>

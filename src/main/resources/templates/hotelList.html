@@ -8,9 +8,16 @@
 
 <body>
 	<h1>[[${category.name}]]一覧</h1>
+	
+	<form th:action="@{/hotels/{id} (id = ${category.id})}" method="get">
+		<input type="text" name="keyword" placeholder="宿名" th:value="${keyword}">
+		<input type="text" name="keywordAddress" placeholder="住所" th:value="${keywordAddress}">
+		<button>検索</button>
+	</form>
 	<table border="1">
 		<tr th:each="hotel:${hotels}">
 			<td th:text="${hotel.name}"></td>
+			<td th:text="${hotel.address}"></td>
 			<td><a th:href="@{/hotels/details/{id}(id=${hotel.id})}">詳細はこちら</a></td>
 		</tr>
 	</table>

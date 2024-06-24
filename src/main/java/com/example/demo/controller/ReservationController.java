@@ -89,6 +89,7 @@ public class ReservationController {
 	public String getReserved(
 			Model model) {
 		List<ViewReservation> reservations = viewReservationRepository.findByCustomerId(account.getId());
+		model.addAttribute("reservations", reservations);
 
 		return "reservedList";
 	}

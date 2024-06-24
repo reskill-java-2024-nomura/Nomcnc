@@ -24,6 +24,7 @@ public class AccountController {
 
 	@Autowired
 	Account account;
+
 	@Autowired
 	CustomerRepository customerRepository;
 
@@ -64,8 +65,10 @@ public class AccountController {
 			@RequestParam("email") String email,
 			@RequestParam("birthday") LocalDate birthday,
 			@RequestParam("password") String password) {
-		//	Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
-		//	customerRepository.save(customer);
+    
+		Customer customer = new Customer(name, postal, address, tel, email, birthday, password);
+		customerRepository.save(customer);
+
 		return "redirect:/signin";
 	}
 
@@ -77,14 +80,18 @@ public class AccountController {
 
 	//会員情報の変更
 
-	@PostMapping("mypage/customer/edit")
-	public String update() {
-		return "redirect:/mypage";
+	@GetMapping("/mypage/customer/edit")
+	public String update(
+			Model model) {
+		Customer customer = customerRepository.findById(account.getId()).get();
+		model.addAttribute(customer);
+		return "editCustomer";
 	}
 
 	//会員の退会
 	@PostMapping("mypage/customer/delete")
 	public String delete() {
+		customerRepository.deleteById(account.getId());
 		return "redirect:/";
 	}
 }

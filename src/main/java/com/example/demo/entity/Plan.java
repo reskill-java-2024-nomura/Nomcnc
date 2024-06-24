@@ -33,6 +33,25 @@ public class Plan {
 		this.note = note;
 	}
 
+	public Plan(Integer id, Integer hotelId, String name, Integer price, Integer roomCount, String note) {
+		super();
+		this.id = id;
+		this.hotelId = hotelId;
+		this.name = name;
+		this.price = price;
+		this.roomCount = roomCount;
+		this.note = note;
+	}
+
+	public Plan(Integer id, String name, Integer price, Integer roomCount, String note) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.roomCount = roomCount;
+		this.note = note;
+	}
+
 	public Integer getId() {
 		return id;
 	}

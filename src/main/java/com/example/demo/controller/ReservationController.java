@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,6 +78,15 @@ public class ReservationController {
 		model.addAttribute("newReservation", newReservation);
 
 		return "reserved";
+	}
+
+	@GetMapping("/reservations")
+	public String getReserved(
+			Model model) {
+		List<Reservation> reservations = reservationRepository.findByCustomerId(account.getId());
+		model.addAttribute("reservations", reservations);
+
+		return "reservedList";
 	}
 
 }

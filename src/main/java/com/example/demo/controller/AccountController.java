@@ -101,7 +101,7 @@ public class AccountController {
 		customer.setBirthday(birthday);
 		customer.setPassword(password);
 		customerRepository.save(customer);
-		return "redirect:/mypage";
+		return "redirect:/top";
 	}
 
 	//会員の退会

@@ -25,6 +25,14 @@ public class Plan {
 	public Plan() {
 	}
 
+	public Plan(Integer hotelId, String name, Integer price, Integer roomCount, String note) {
+		this.hotelId = hotelId;
+		this.name = name;
+		this.price = price;
+		this.roomCount = roomCount;
+		this.note = note;
+	}
+
 	public Plan(Integer id, Integer hotelId, String name, Integer price, Integer roomCount, String note) {
 		super();
 		this.id = id;

@@ -22,6 +22,17 @@ public class Plan {
 	private Integer roomCount;
 	private String note;
 
+	public Plan() {
+	}
+
+	public Plan(Integer hotelId, String name, Integer price, Integer roomCount, String note) {
+		this.hotelId = hotelId;
+		this.name = name;
+		this.price = price;
+		this.roomCount = roomCount;
+		this.note = note;
+	}
+
 	public Integer getId() {
 		return id;
 	}

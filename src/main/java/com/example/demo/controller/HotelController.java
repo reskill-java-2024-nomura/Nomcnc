@@ -95,4 +95,14 @@ class HotelController {
 		return "hotelDetail";
 	}
 
+	@GetMapping("/reviews/{hotelId}/post")
+	public String post(
+			@PathVariable("hotelId") Integer hotelId,
+			Model model) {
+		Hotel hotel = hotelRepository.findById(hotelId).get();
+		model.addAttribute("hotel", hotel);
+
+		return "postReview";
+	}
+
 }

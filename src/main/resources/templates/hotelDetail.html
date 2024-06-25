@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title></title>
-<link href="/style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title></title>
+	<link href="/style.css" rel="stylesheet">
 </head>
 <header th:replace="header"></header>
+
 <body>
 	[[${hotel.name}]]
-<table class="table-design1">
-	<tr>
-		<th>NO</th>
-		<th>商品名</th>
-		<th>部屋数</th>
-		<th>価格</th>
-		<th>備考</th>
-		<th>予約</th>
-	</tr>
-	<tr th:each="plan:${plans}">
-		<td>[[${plan.id}]]</td>
-		<td>[[${plan.name}]]</td>
-		<td>[[${plan.roomCount}]]</td>
-		<td>[[${plan.price}]]</td>
-		<td>[[${plan.note}]]</td>
-		<td><a th:href="@{/reservation/input/{id}(id=${plan.id})}"><button>予約</button></a></td>	
-	</tr>
-</table>
-口コミ一覧
-<table border="1">
-	<tr>
-		<th>プラン名</th>
-		<th>年代</th>
-		<th>利用時期</th>
-		<th>滞在日数</th>
-		<th>点数</th>
-		<th>コメント</th>
-	</tr>
-	<tr th:each="review:${reviews}">
-		<td>[[${review.planName}]]</td>
-		<td>[[${review.userAge}]]代</td>
-		<td>[[${review.stayMonth}]]月</td>
-		<td>[[${review.stayDays}]]日間</td>
-		<td>
-			<span th:each="star : ${#numbers.sequence(1, review.point)}">★</span>
-		</td>
-		<td>[[${review.review}]]</td>
-</table>
+	<table class="table-design1">
+		<tr>
+			<th>NO</th>
+			<th>商品名</th>
+			<th>部屋数</th>
+			<th>価格</th>
+			<th>備考</th>
+			<th>予約</th>
+		</tr>
+		<tr th:each="plan:${plans}">
+			<td>[[${plan.id}]]</td>
+			<td>[[${plan.name}]]</td>
+			<td>[[${plan.roomCount}]]</td>
+			<td>[[${plan.price}]]</td>
+			<td>[[${plan.note}]]</td>
+			<td><a th:href="@{/reservation/input/{id}(id=${plan.id})}"><button>予約</button></a></td>
+		</tr>
+	</table>
+	口コミ一覧
+	<form method="get" th:action="@{/reviews/{hotelId}/post(hotelId=${hotel.id})}">
+		<button>新規投稿</button>
+	</form>
+	<table border="1">
+		<tr>
+			<th>プラン名</th>
+			<th>年代</th>
+			<th>利用時期</th>
+			<th>滞在日数</th>
+			<th>点数</th>
+			<th>コメント</th>
+		</tr>
+		<tr th:each="review:${reviews}">
+			<td>[[${review.planName}]]</td>
+			<td>[[${review.userAge}]]代</td>
+			<td>[[${review.stayMonth}]]月</td>
+			<td>[[${review.stayDays}]]日間</td>
+			<td>
+				<span th:each="star : ${#numbers.sequence(1, review.point)}">★</span>
+			</td>
+			<td>[[${review.review}]]</td>
+	</table>
 </body>
+
 </html>

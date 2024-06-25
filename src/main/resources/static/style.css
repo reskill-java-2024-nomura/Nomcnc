@@ -81,21 +81,21 @@ footer {
   margin:auto;
 }
 .table-design2 th, .table-design2 td {
-  border: 2px solid #d2e8f1;
+  border: 2px solid papayawhip;
   padding: 1em;
 }
 .table-design2 thead th {
-  background-color: #4d9bc1;
-  color: #fff;
-  border: 2px solid #4d9bc1;
+  background-color: papayawhip;
+  color: rgb(0, 0, 0);
+  border: 2px solid papayawhip;
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
 }
 .table-design2 thead th:last-of-type {
-  border-right: 2px solid #4d9bc1;
+  border-right: 2px solid papayawhip;
 }
 .table-design2 tbody th {
-  color: #4d9bc1;
+  color: papayawhip;
   font-weight: bold;
   text-align: center;
 }

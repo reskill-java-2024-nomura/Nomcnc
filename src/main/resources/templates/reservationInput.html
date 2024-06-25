@@ -10,6 +10,7 @@
 <body>
 	ご予約商品
 	<table class="table-design2">
+		<thead>
 		<tr>
 			<th>NO</th>
 			<th>商品名</th>
@@ -20,6 +21,7 @@
 			<td>[[${plan.name}]]</td>
 			<td>[[${plan.price}]]</td>
 		</tr>
+		  </thead>
 	</table>
 	<p>お客様情報入力</p>
 	<span th:text ="${error}"></span>

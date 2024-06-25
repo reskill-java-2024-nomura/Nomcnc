@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>会員情報更新</title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
 <body>
 	<h1>会員情報更新</h1>
 		<form th:action="@{/admin/customers/{customerid}/edit(customerid=${customer.id})}" method="post">
-		<table border="1">
+		<table class="table-design1">
 			<tr>
 				<th>顧客ID</th>
 				<td>[[${customer.id}]]</td>

@@ -13,14 +13,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Hotel;
 import com.example.demo.entity.Plan;
+import com.example.demo.entity.Review;
 import com.example.demo.entity.ViewReview;
+import com.example.demo.model.Account;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.HotelRepository;
 import com.example.demo.repository.PlanRepository;
+import com.example.demo.repository.ReviewRepository;
 import com.example.demo.repository.ViewReviewRepository;
 
 @Controller
 class HotelController {
+
+	@Autowired
+	Account account;
 
 	@Autowired
 	PlanRepository planRepository;
@@ -30,6 +36,9 @@ class HotelController {
 
 	@Autowired
 	HotelRepository hotelRepository;
+
+	@Autowired
+	ReviewRepository reviewRepository;
 
 	@Autowired
 	ViewReviewRepository viewReviewRepository;
@@ -96,6 +105,7 @@ class HotelController {
 		return "hotelDetail";
 	}
 
+	//口コミ新規登録画面
 	@GetMapping("/reviews/{hotelId}/post")
 	public String post(
 			@PathVariable("hotelId") Integer hotelId,
@@ -103,21 +113,27 @@ class HotelController {
 		Hotel hotel = hotelRepository.findById(hotelId).get();
 		model.addAttribute("hotel", hotel);
 
+		List<Plan> plans = planRepository.findByHotelId(hotelId);
+		model.addAttribute("plans", plans);
+
 		return "postReview";
 	}
 
+	//口コミ新規登録
 	@PostMapping("/reviews/{hotelId}/post")
 	public String store(
 			@PathVariable("hotelId") Integer hotelId,
-			@RequestParam("planName") String planName,
-			@RequestParam("userAge") Integer usrAge,
+			@RequestParam("planId") Integer planId,
+			@RequestParam("userAge") Integer userAge,
 			@RequestParam("stayMonth") Integer stayMonth,
 			@RequestParam("stayDays") Integer stayDays,
 			@RequestParam("point") Integer point,
 			@RequestParam("review") String review,
 			Model model) {
+		Review newReview = new Review(account.getId(), hotelId, planId, userAge, stayMonth, stayDays, point, review);
+		reviewRepository.save(newReview);
 
-		return "redirect:/hotels/details/{hotelId]";
+		return "redirect:/hotels/details/{hotelId}";
 	}
 
 }

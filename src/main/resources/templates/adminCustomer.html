@@ -10,18 +10,22 @@
 
 <body>
 	<h1>顧客一覧</h1>
-	名前検索：
-	<form action="/admin/customers" method="get">
-		<input type="text" name="keyword" th:value="${keyword}">
-		<button>検索</button>
-	</form><br>
-	電話番号検索：
-	<form action="/admin/customers" method="get">
-		<input type="text" name="keywordphone" th:value="${keywordphone}">
-		<button>検索</button>
-	</form>
+	<div style="display: inline-block;" class="btndesign">
+		<div>
+			<form action="/admin/customers" method="get">
+				<input style="padding: 0.7vw;" type="text" name="keyword" th:value="${keyword}" placeholder="名前検索">
+				<button>検索</button>
+			</form>
+		</div>
+		<div>
+			<form action="/admin/customers" method="get">
+				<input style="padding: 0.7vw;" type="text" name="keywordphone" th:value="${keywordphone}" placeholder="電話番号検索">
+				<button>検索</button>
+			</form>
+		</div>
+	</div>
 	<br>
-	<table class="table-design1">
+	<table class="table-design3">
 		<tr>
 			<th>会員ID</th>
 			<th>名前</th>
@@ -54,7 +58,7 @@
 			</td>
 			<td>
 				<form th:action="@{/admin/customers/{customerid}/delete(customerid=${customer.id})}" method="post">
-					<button onclick="return confirnDelete()">削除</button>
+					<button onclick="return confirmDelete()">削除</button>
 				</form>
 			</td>
 		</tr>

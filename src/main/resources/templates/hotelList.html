@@ -8,7 +8,7 @@
 </head>
 <header th:replace="header"></header>
 <body>
-	<h1>[[${category.name}]]一覧</h1>
+	<h2>[[${category.name}]]一覧</h2>
 	
 	<form th:action="@{/hotels/{id} (id = ${category.id})}" method="get">
 		<input type="text" name="keyword" placeholder="宿名" th:value="${keyword}">

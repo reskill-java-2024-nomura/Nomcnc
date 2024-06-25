@@ -18,8 +18,8 @@
 				<th>カテゴリー</th>
 				<td>
 		<select name="categoryId">
-			 <option th:value="${hotel.categoryId}"></option>
-       		<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+       		<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+       		th:selected="${category.id}==${hotel.id}"></option>
     	</select><br>
        			</td>
 			</tr>

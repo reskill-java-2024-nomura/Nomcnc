@@ -14,6 +14,11 @@ body {
   text-align: center;
   background-color: rgb(252, 252, 245);
 }
+
+a{
+	text-decoration: none; 
+}
+
 header {
   background-color: rosybrown;
   height: 80px;
@@ -54,7 +59,6 @@ footer {
   justify-content: flex-end;
 }
 
-.top{}
 
 .table-design1 {
   border-collapse: collapse;
@@ -84,6 +88,7 @@ footer {
 .table-design2 th, .table-design2 td {
   border: 2px solid rgb(239, 222, 218);
   padding: 10px;
+  background-color: #fff;
 }
 .table-design2 thead th {
   background-color: rgb(239, 222, 218);
@@ -156,5 +161,37 @@ border-radius: 5px; /* 角丸をつける */
 }
 
 h3{
-	margin:auto;
+	margin: 20px;
+}
+
+h2 {
+ margin: 20px;
+}
+
+.btndesign button {
+	background-color: rgb(239, 222, 218);
+	border: 1px solid transparent;
+	border-radius: 35px;
+	width: 100px;
+	height: 40px;
+	margin: 10px;
+}
+
+.mypage{
+	background-color: rgb(239, 222, 218);
+	width: 300px;
+	margin: 40px 37%;
+	padding: 30px;
+}
+
+.mypageinput{
+	width: 200px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  margin: 3px;
+}
+
+.msg{
+	margin: auto;
 }

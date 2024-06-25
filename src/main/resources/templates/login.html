@@ -10,18 +10,20 @@
 <body>
 	<h1>ログイン</h1>
 	<span th:text="${error}" style="color: red"></span>
+	<div class="mypage">
 	<form action="/login" method="post">
 		<table>
 			<tr>
-				<td><input type="text" placeholder="メールアドレス" name="email"></td>
+				<td><input type="text" placeholder="メールアドレス" name="email" class="mypageinput"></td>
 			</tr>
 			<tr>
-				<td><input type="text" placeholder="パスワード" name="password"></td>
+				<td><input type="text" placeholder="パスワード" name="password" class="mypageinput"></td>
 			</tr>
 
 		</table>
 		<button>ログイン</button>
 	</form>
+	</div>
 	<form action="/signin" method="get">
 		<button>新規登録はこちら</button>
 	</form>

@@ -3,20 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
 <body>
 	<h1>プラン追加</h1>
+	<div class="mypage">
 	<form action="/admin/plans/add" method="post">
 	名前： 
-	<input type="text" name="name"><br>
+	<input type="text" name="name" class="mypageinput"><br>
 	値段：
-	<input type="text" name="price"><br>
+	<input type="text" name="price" class="mypageinput"><br>
 	部屋数：
-	<input type="text" name="roomCount"><br>
+	<input type="text" name="roomCount" class="mypageinput"><br>
 	備考：
-	<input type="text" name="note"><br>
+	<input type="text" name="note" class="mypageinput"><br>
 	<input type="hidden" name="hotelId" th:value="${hotelId}">
-	<button>プラン追加</button>
+	<div class="btndesign2">
+		<button>プラン追加</button>
+	</div>
 	</form>
+	</div>
 </body>
 </html>

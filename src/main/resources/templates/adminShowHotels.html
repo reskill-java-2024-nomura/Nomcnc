@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>宿管理一覧画面</title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
 <body>
 <h1>宿一覧</h1>
 
@@ -22,7 +24,7 @@
 </form>
 
 
-<table border="1">
+<table  class="table-design1">
 		<tr>
 			<th>ID</th>
 			<th>名前</th>
@@ -41,10 +43,21 @@
 		</td>
 		<td>
 			<form th:action="@{/admin/hotels/{hotelId}/delete(hotelId=${hotel.id})}" method="post">
-				<button>削除</button>
+				<button onclick="return confirmDelete()">削除</button>
 			</form>
 		</td>
 		</tr>
 	</table>
+	<script>
+		function confirmDelete() {
+			var message = "本当に削除しますか？";
+			var checked = confirm(message);
+			if (checked) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>宿詳細</title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
 <body>
 	
-<a href = "/admin/hotels">宿一覧に戻る</a>
 <h1>宿詳細</h1>
-<table border="1">
+<table class="table-design1">
 	<tr>
 			<th>ID</th>
 			<th>宿名</th>
@@ -35,11 +36,10 @@
 
 <h2>プラン一覧</h2>
 
-	<a th:href="@{/admin/hotels/{hotelId}/plans/add(hotelId=${hotel.id})}">プラン新規登録</a>
 
-
-<table border="1">
+<table class="table-design2">
 		<tr>
+			<thead>
 			<th>ID</th>
 			<th>プラン名</th>
 			<th>金額</th>
@@ -47,6 +47,7 @@
 			<th>備考</th>
 			<th>編集</th>
 			<th>削除</th>
+			</thead>
 		</tr>
 		<tr th:each="plan:${plans}">
 			<td th:text="${plan.id}"></td>
@@ -63,14 +64,25 @@
 		</td>
 		<td>
 		<form th:action ="@{/admin/plans/{planId}/delete(planId=${plan.id})}" method="post">
-				<button>削除</button>
+				<button onclick="return confirmDelete()">削除</button>
 		</form>
 		</td>
 		</tr>
 	</table>
-
-
-
-
+	<div class="btndesign">
+		<a th:href="@{/admin/hotels/{hotelId}/plans/add(hotelId=${hotel.id})}"><button>プラン新規登録</button></a>
+		<a href = "/admin/hotels"><button>宿一覧に戻る</button></a>
+	</div>
+	<script>
+		function confirmDelete() {
+			var message = "本当に削除しますか？";
+			var checked = confirm(message);
+			if (checked) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

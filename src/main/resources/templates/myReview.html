@@ -4,12 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link href="/style.css" rel="stylesheet">
 </head>
-
-<bod	y>
 <header th:replace="header"></header>
-	<table border="1">
+<body>
+
+	<table class="table-design2">
 		<tr>
+			<thead>
 			<th>ホテル名</th>
 			<th>プラン名</th>
 			<th>年代</th>
@@ -19,6 +21,7 @@
 			<th>コメント</th>
 			<th>編集</th>
 			<th>削除</th>
+			<thead>
 		</tr>
 		<tr th:each="review:${reviews}">
 			<td>[[${review.hotelName}]]</td>

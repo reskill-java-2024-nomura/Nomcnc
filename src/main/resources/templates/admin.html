@@ -2,10 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>管理画面</title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
 <body>
-	<a href="/admin/hotels">宿管理</a>
-	<a href="/admin/customers">会員管理</a>
+	<h1>管理者専用</h1>
+	<br>
+	<div class="btndesign">
+	<a href="/admin/hotels"><button>宿管理</button></a>
+	<a href="/admin/customers"><button>会員管理</button></a>
+	</div>
 </body>
 </html>

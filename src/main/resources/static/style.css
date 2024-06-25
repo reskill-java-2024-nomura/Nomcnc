@@ -17,6 +17,7 @@ body {
 
 a{
 	text-decoration: none; 
+	color: black;
 }
 
 header {
@@ -45,6 +46,7 @@ header ul {
 header li {
   list-style: none;
   margin-right: 40px;
+  color: white; 
 }
 
 footer {
@@ -144,11 +146,11 @@ border-radius: 5px; /* 角丸をつける */
   padding: 40px; /* ボタンの内側の余白 */
   width: 24%;
   margin: 10px; /* ボタン同士の余白 */
-  background-color: lightgrey; /* ボタンの背景色 */
+  background-color: rgb(239, 222, 218); /* ボタンの背景色 */
   color: white; /* ボタンの文字色 */
   text-align: center; /* ボタンのテキストを中央揃えにする */
   text-decoration: none; /* テキストに下線をつけない */
-  font-size: 15px; /* テキストのフォントサイズ */
+  font-size: 20px; /* テキストのフォントサイズ */
   cursor: pointer; /* マウスポインタを変更する */
 }
 

@@ -27,6 +27,7 @@
 	<br>
 	<table class="table-design3">
 		<tr>
+			<thead>
 			<th>会員ID</th>
 			<th>名前</th>
 			<th>郵便番号</th>
@@ -39,6 +40,7 @@
 			<th>パスワード</th>
 			<th>編集</th>
 			<th>削除</th>
+			</thead>
 		</tr>
 		<tr th:each="customer:${customers}">
 			<td>[[${customer.id}]]</td>

@@ -15,6 +15,8 @@ public class ViewReview {
 	private Integer id;
 	@Column(name = "hotel_id")
 	private Integer hotelId;
+	@Column(name = "hotel_name")
+	private String hotelName;
 	@Column(name = "customer_id")
 	private Integer customerId;
 	@Column(name = "plan_name")
@@ -34,6 +36,10 @@ public class ViewReview {
 
 	public Integer getHotelId() {
 		return hotelId;
+	}
+
+	public String getHotelName() {
+		return hotelName;
 	}
 
 	public Integer getCustomerId() {

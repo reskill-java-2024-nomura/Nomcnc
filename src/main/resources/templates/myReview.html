@@ -6,10 +6,11 @@
 	<title></title>
 </head>
 
-<body>
-	<header th:replace="header"></header>
+<bod	y>
+<header th:replace="header"></header>
 	<table border="1">
 		<tr>
+			<th>ホテル名</th>
 			<th>プラン名</th>
 			<th>年代</th>
 			<th>利用時期</th>
@@ -20,6 +21,7 @@
 			<th>削除</th>
 		</tr>
 		<tr th:each="review:${reviews}">
+			<td>[[${review.hotelName}]]</td>
 			<td>[[${review.planName}]]</td>
 			<td>[[${review.userAge}]]代</td>
 			<td>[[${review.stayMonth}]]月</td>

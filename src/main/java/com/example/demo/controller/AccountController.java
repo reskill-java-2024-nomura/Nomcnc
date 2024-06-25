@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Customer;
+import com.example.demo.entity.Review;
 import com.example.demo.entity.ViewReview;
 import com.example.demo.model.Account;
 import com.example.demo.repository.CustomerRepository;
@@ -144,6 +145,37 @@ public class AccountController {
 	}
 
 	//口コミの編集
+	@GetMapping("/reviews/{id}/edit")
+	public String editReview(
+			@PathVariable("id") Integer id,
+			Model model) {
+		ViewReview review = viewReviewRepository.findById(id).get();
+		model.addAttribute("review", review);
+
+		return "editReview";
+	}
+
+	//口コミ更新
+	@PostMapping("/reviews/{id}/edit")
+	public String update(
+			@PathVariable("id") Integer id,
+			@RequestParam("userAge") Integer userAge,
+			@RequestParam("stayMonth") Integer stayMonth,
+			@RequestParam("stayDays") Integer stayDays,
+			@RequestParam("point") Integer point,
+			@RequestParam("review") String review) {
+
+		Review newReview = reviewRepository.findById(id).get();
+		newReview.setUserAge(userAge);
+		newReview.setStayMonth(stayMonth);
+		newReview.setStayDays(stayDays);
+		newReview.setPoint(point);
+		newReview.setReview(review);
+
+		reviewRepository.save(newReview);
+
+		return "redirect:/reviews";
+	}
 
 	//口コミの削除
 	@PostMapping("/reviews/{id}/delete")

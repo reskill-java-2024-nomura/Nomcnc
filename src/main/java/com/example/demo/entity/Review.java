@@ -81,4 +81,40 @@ public class Review {
 		return review;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+	public void setHotelId(Integer hotelId) {
+		this.hotelId = hotelId;
+	}
+
+	public void setPlanId(Integer planId) {
+		this.planId = planId;
+	}
+
+	public void setUserAge(Integer userAge) {
+		this.userAge = userAge;
+	}
+
+	public void setStayMonth(Integer stayMonth) {
+		this.stayMonth = stayMonth;
+	}
+
+	public void setStayDays(Integer stayDays) {
+		this.stayDays = stayDays;
+	}
+
+	public void setPoint(Integer point) {
+		this.point = point;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
 }

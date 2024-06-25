@@ -1,7 +1,7 @@
 -- 各種テーブル削除
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS hotels;
+DROP TABLE IF EXISTS hotels cascade;
 DROP TABLE IF EXISTS plans cascade;
 DROP TABLE IF EXISTS reservations cascade;
 DROP TABLE IF EXISTS reviews;
@@ -93,6 +93,7 @@ CREATE VIEW view_reviews as
 select
 	r.id,
 	r.hotel_id,
+	h.name as hotel_name,
 	r.customer_id,
 	p.name as plan_name,
 	r.user_age,
@@ -102,4 +103,5 @@ select
 	r.review
 FROM reviews r
 JOIN plans p on r.plan_id=p.id
+JOIN hotels h on r.hotel_id=h.id
 ;	

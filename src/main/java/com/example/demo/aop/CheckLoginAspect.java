@@ -15,13 +15,20 @@ public class CheckLoginAspect {
 	@Autowired
 	Account account;
 
-	@Around("execution(* com.example.demo.controller.ReservationController.*(..)) ||"
-			+ "execution(* com.example.demo.controller.AccountController.mypageIndex(..))"
-
-	)
-	public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {
+	@Around("execution(* com.example.demo.controller.ReservationController.*(..))")
+	public Object checkLoginReservation(
+			ProceedingJoinPoint jp) throws Throwable {
 		if (account == null || account.getName() == null || account.getName().length() == 0) {
-			return "redirect:/";
+			return "redirect:/login?error=reservation";
+		}
+		return jp.proceed();
+	}
+
+	@Around("execution(* com.example.demo.controller.AccountController.mypageIndex(..))")
+	public Object checkLoginMypage(
+			ProceedingJoinPoint jp) throws Throwable {
+		if (account == null || account.getName() == null || account.getName().length() == 0) {
+			return "redirect:/login?error=mypage";
 		}
 		return jp.proceed();
 	}

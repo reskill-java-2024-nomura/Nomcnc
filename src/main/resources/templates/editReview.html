@@ -26,7 +26,8 @@
 			<td>
 				<select name="point">
 				<option th:each="star, count : ${#numbers.sequence(1, 5)}"
-				th:value="${star}" th:text="${'★'.repeat(star)}">
+				th:value="${star}" th:text="${'★'.repeat(star)}" 
+				th:selected="${star}==${review.point}">
 				</option>
 				</select>
 			</td>

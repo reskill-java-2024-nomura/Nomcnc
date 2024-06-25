@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8">
 <title></title>
@@ -7,28 +8,44 @@
 </head>
 <header th:replace="header"></header>
 <body>
-<h1>予約一覧</h1>
-<table border="1">
-	<tr>
-		<td>ID</td>
-		<td>予約プラン</td>
-		<td>部屋数</td>
-		<td>予約日</td>
-		<td>チェックイン</td>
-		<td>チェックアウト</td>
-		<td>合計価格</td>
-		<td>キャンセル</td>
-	</tr>
-	<tr th:each="reservation:${reservations}">
-		<td th:text="${reservation.id}"></td>
-		<td th:text="${reservation.planName}"></td>
-		<td th:text="${reservation.roomCount}"></td>
-		<td th:text="${reservation.reservationDate}"></td>
-		<td th:text="${reservation.checkinDate}"></td>
-		<td th:text="${reservation.checkoutDate}"></td>
-		<td th:text="${reservation.payment}"></td>
-		<td></td>
-	</tr>
-</table>
+	<h1>予約一覧</h1>
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>予約プラン</td>
+			<td>部屋数</td>
+			<td>予約日</td>
+			<td>チェックイン</td>
+			<td>チェックアウト</td>
+			<td>合計価格</td>
+			<td>キャンセル</td>
+		</tr>
+		<tr th:each="reservation:${reservations}">
+			<td th:text="${reservation.id}"></td>
+			<td th:text="${reservation.planName}"></td>
+			<td th:text="${reservation.roomCount}"></td>
+			<td th:text="${reservation.reservationDate}"></td>
+			<td th:text="${reservation.checkinDate}"></td>
+			<td th:text="${reservation.checkoutDate}"></td>
+			<td th:text="${reservation.payment}"></td>
+			<td>
+				<form method="post" th:action="@{/reservations/{id}/delete(id=${reservation.id})}">
+					<button onclick="return confirmCancel()">キャンセル</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<script>
+		function confirmCancel() {
+			var message = "本当にキャンセルしますか？";
+			var checked = confirm(message);
+				if (checked) {
+					return true;
+				} else {
+					return false;
+				}
+		}
+	</script>
 </body>
+
 </html>

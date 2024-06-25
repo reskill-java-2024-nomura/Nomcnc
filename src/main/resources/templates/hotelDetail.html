@@ -26,5 +26,25 @@
 		<td><a th:href="@{/reservation/input/{id}(id=${plan.id})}"><button>予約</button></a></td>	
 	</tr>
 </table>
+口コミ一覧
+<table border="1">
+	<tr>
+		<th>プラン名</th>
+		<th>年代</th>
+		<th>利用時期</th>
+		<th>滞在日数</th>
+		<th>点数</th>
+		<th>コメント</th>
+	</tr>
+	<tr th:each="review:${reviews}">
+		<td>[[${review.planName}]]</td>
+		<td>[[${review.userAge}]]代</td>
+		<td>[[${review.stayMonth}]]月</td>
+		<td>[[${review.stayDays}]]日間</td>
+		<td>
+			<span th:each="star : ${#numbers.sequence(1, review.point)}">★</span>
+		</td>
+		<td>[[${review.review}]]</td>
+</table>
 </body>
 </html>

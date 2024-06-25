@@ -23,11 +23,20 @@
 			</tr>
 			<tr>
 				<td>年代</td>
-				<td><input name="userAge" type="number" placeholder="年代(10単位)">代</td>
+				<td>
+					<select name="userAge">
+						<option th:each="num : ${#numbers.sequence(10, 90, 10)}" th:value="${num}" th:text="${num}">
+							</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>利用時期</td>
-				<td><input name="stayMonth" type="number" placeholder="利用時期">月</td>
+				<td><select name="stayMonth">
+						<option th:each="num : ${#numbers.sequence(1, 12)}" th:value="${num}" th:text="${num}">
+							</option>
+					</select>
+					</td>
 
 			</tr>
 			<tr>

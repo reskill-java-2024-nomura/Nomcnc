@@ -8,8 +8,9 @@
 </head>
 <header th:replace="header"></header>
 <body>
-	ご予約商品
+	<h3>ご予約商品</h3>
 	<table class="table-design2">
+		<thead>
 		<tr>
 			<th>NO</th>
 			<th>商品名</th>
@@ -20,11 +21,12 @@
 			<td>[[${plan.name}]]</td>
 			<td>[[${plan.price}]]</td>
 		</tr>
+		  </thead>
 	</table>
-	<p>お客様情報入力</p>
+	<h3>お客様情報入力</h3>
 	<span th:text ="${error}"></span>
 	<form method="post" th:action="@{/reservation/confirm/{planId}(planId=${plan.id})}">
-		<table border="1">
+		<table class="table-design3">
 			<tr>
 				<td>お名前</td>
 				<td><input name="name" type="text" th:value="${@account.name}"></td>

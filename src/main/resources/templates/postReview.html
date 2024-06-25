@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<h1>[[${hotel.name}]]</h1>
+	<form method="post" th:action="@{reviews/{hotelId}/post(hotelId=${hotel.id})}">
+		<table border="1">
+			<tr>
+				<th>プラン名</th>
+				<th>年代</th>
+				<th>利用時期</th>
+				<th>滞在日数</th>
+				<th>点数</th>
+				<th>コメント</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>

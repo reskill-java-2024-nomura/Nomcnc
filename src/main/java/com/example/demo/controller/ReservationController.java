@@ -38,7 +38,6 @@ public class ReservationController {
 	public String reserve(
 			@PathVariable("planId") Integer planId,
 			Model model) {
-
 		Plan plan = planRepository.findById(planId).get();
 		model.addAttribute("plan", plan);
 
@@ -62,6 +61,11 @@ public class ReservationController {
 		Plan plan = planRepository.findById(planId).get();
 		model.addAttribute("plan", plan);
 
+		//roomCountによるエラーメッセージ出力
+		if (roomCount >= plan.getRoomCount()) {
+			model.addAttribute("error", plan.getRoomCount() + 1 + "部屋以上予約できません。");
+			return "reservationInput";
+		}
 		return "reservationConfirm";
 	}
 

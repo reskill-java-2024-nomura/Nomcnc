@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
@@ -103,6 +104,20 @@ class HotelController {
 		model.addAttribute("hotel", hotel);
 
 		return "postReview";
+	}
+
+	@PostMapping("/reviews/{hotelId}/post")
+	public String store(
+			@PathVariable("hotelId") Integer hotelId,
+			@RequestParam("planName") String planName,
+			@RequestParam("userAge") Integer usrAge,
+			@RequestParam("stayMonth") Integer stayMonth,
+			@RequestParam("stayDays") Integer stayDays,
+			@RequestParam("point") Integer point,
+			@RequestParam("review") String review,
+			Model model) {
+
+		return "redirect:/hotels/details/{hotelId]";
 	}
 
 }

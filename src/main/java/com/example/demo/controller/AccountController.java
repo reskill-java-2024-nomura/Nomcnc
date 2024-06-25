@@ -41,8 +41,19 @@ public class AccountController {
 
 	//ログイン
 	@GetMapping({ "/", "/login" })
-	public String index() {
+	public String index(
+			@RequestParam(name = "error", defaultValue = "") String error,
+			Model model) {
+		if (error.equals("reservation")) {
+			String msg = "予約するにはログインしてください";
+			model.addAttribute("msg", msg);
+		}
+		if (error.equals("mypage")) {
+			String msg = "マイページを表示するにはログインしてください";
+			model.addAttribute("msg", msg);
+		}
 		return "login";
+
 	}
 
 	@PostMapping("/login")
@@ -53,8 +64,8 @@ public class AccountController {
 		List<Customer> customers = customerRepository.findByEmailAndPassword(email, password);
 
 		if (customers.size() == 0) {
-			String error = "メールアドレスとパスワードの組み合わせが不正です";
-			model.addAttribute("error", error);
+			String msg = "メールアドレスとパスワードの組み合わせが不正です";
+			model.addAttribute("msg", msg);
 			return "login";
 		} else {
 			account.setId(customers.get(0).getId());

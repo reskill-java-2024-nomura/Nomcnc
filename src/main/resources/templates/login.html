@@ -9,8 +9,10 @@
 <header th:replace="header"></header>
 <body>
 	<h1>ログイン</h1>
-	<span th:text="${error}" style="color: red"></span>
 	<div class="mypage">
+
+	<span th:text="${msg}" style="color: red"></span>
+
 	<form action="/login" method="post">
 		<table>
 			<tr>
@@ -21,11 +23,15 @@
 			</tr>
 
 		</table>
-		<button>ログイン</button>
+		<div class="btndesign2">
+			<button>ログイン</button>
+		</div>
 	</form>
 	</div>
-	<form action="/signin" method="get">
-		<button>新規登録はこちら</button>
-	</form>
+	<div class="btndesign">
+		<form action="/signin" method="get">
+			<button>新規登録はこちら</button>
+		</form>
+	</div>
 </body>
 </html>

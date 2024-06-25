@@ -48,12 +48,18 @@ class HotelController {
 		model.addAttribute("category", category);
 
 		List<Hotel> hotels = null;
+		//宿名検索
 		if (keyword.length() > 0) {
 			hotels = hotelRepository.findByCategoryIdAndNameContaining(categoryId, keyword);
 		}
 		//住所検索
 		else if (keywordAddress.length() > 0) {
 			hotels = hotelRepository.findByCategoryIdAndAddressContaining(categoryId, keywordAddress);
+		}
+		//宿名＆住所検索
+		else if (keyword.length() > 0 && keywordAddress.length() > 0) {
+			hotels = hotelRepository.findByCategoryIdAndAddressContainingAndNameContaining(categoryId, keywordAddress,
+					keyword);
 		}
 		//カテゴリー内全検索
 		else {

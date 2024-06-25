@@ -64,8 +64,10 @@ select
    r.id,
    r.customer_id,
    r.plan_id,
+   r.reservation_date,
    r.checkin_date,
    r.checkout_date,
+   r.room_count,
    r.room_count*p.price as payment,
    p.name as plan_name
 from

@@ -17,4 +17,7 @@ public interface HotelRepository extends JpaRepository<Hotel, Integer> {
 	List<Hotel> findByCategoryIdAndNameContaining(Integer categoryId, String keyword);
 
 	List<Hotel> findByCategoryIdAndAddressContaining(Integer categoryId, String keywordAddress);
+
+	List<Hotel> findByCategoryIdAndAddressContainingAndNameContaining(Integer categoryId, String keywordAddress,
+			String keyword);
 }

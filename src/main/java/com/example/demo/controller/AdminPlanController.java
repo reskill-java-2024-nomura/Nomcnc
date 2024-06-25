@@ -51,8 +51,10 @@ public class AdminPlanController {
 	@PostMapping("/admin/plans/{id}/delete")
 	public String delete(
 			@PathVariable("id") Integer id) {
+		Plan plan = planRepository.findById(id).get();
+		Integer hotelId = plan.getHotelId();
 		planRepository.deleteById(id);
-		return "redirect:/admin/hotels/{id}";
+		return "redirect:/admin/hotels/" + hotelId;
 	}
 
 	@PostMapping("/admin/plans/{id}/edit")

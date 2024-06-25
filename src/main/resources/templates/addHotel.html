@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>宿新規登録画面</title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
 <body>
-<h1>宿新規登録</h1>
+<h2>宿新規登録</h2>
+	<div class="mypage">
 	<form action="/admin/hotels/add" method="post">
 		<input type="text" name="name" placeholder="宿名"><br>
 		カテゴリー名
@@ -21,5 +24,6 @@
 		<input type="time" name="checkoutTime" placeholder="チェックアウト時間"><br>
 		<button>登録</button>
 	</form>
+	</div>
 </body>
 </html>

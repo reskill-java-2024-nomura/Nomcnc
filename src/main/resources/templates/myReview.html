@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<bod	y>
+<header th:replace="header"></header>
+	<table border="1">
+		<tr>
+			<th>ホテル名</th>
+			<th>プラン名</th>
+			<th>年代</th>
+			<th>利用時期</th>
+			<th>滞在日数</th>
+			<th>点数</th>
+			<th>コメント</th>
+			<th>編集</th>
+			<th>削除</th>
+		</tr>
+		<tr th:each="review:${reviews}">
+			<td>[[${review.hotelName}]]</td>
+			<td>[[${review.planName}]]</td>
+			<td>[[${review.userAge}]]代</td>
+			<td>[[${review.stayMonth}]]月</td>
+			<td>[[${review.stayDays}]]日間</td>
+			<td>
+				<span th:each="star : ${#numbers.sequence(1, review.point)}">★</span>
+			</td>
+			<td>[[${review.review}]]</td>
+			<td>
+				<form method="get" th:action="@{/reviews/{id}/edit(id=${review.id})}"><button>編集</button></form>
+			</td>
+			<td>
+				<form method="post" th:action="@{/reviews/{id}/delete(id=${review.id})}"><button>削除</button></form>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

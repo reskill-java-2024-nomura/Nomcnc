@@ -94,4 +94,11 @@ public class ReservationController {
 		return "reservedList";
 	}
 
+	@PostMapping("reservations/{id}/delete")
+	public String delete(
+			@PathVariable("id") Integer id) {
+		reservationRepository.deleteById(id);
+		return "redirect:/reservations";
+	}
+
 }

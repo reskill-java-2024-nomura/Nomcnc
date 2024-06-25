@@ -9,22 +9,26 @@
 <header th:replace="header"></header>
 
 <body>
-	<h1>マイページ</h1>
+	<h2>マイページ</h2>
+	<div class="mypage">
 		<form action="/mypage/customer/edit" method="post">
 			<input type="hidden" name="id" th:value="${customer.id}"><br>
-			<input type="text" placeholder="名前" name="name" th:value="${customer.name}"><br>
-			<input type="text" placeholder="郵便番号" name="postal" th:value="${customer.postal}"><br>
-			<input type="text" placeholder="住所" name="address" th:value="${customer.address}"><br>
-			<input type="text" placeholder="電話番号" name="tel" th:value="${customer.tel}"><br>
-			<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}"><br>
-			<input type="date" placeholder="誕生日" name="birthday" th:value="${customer.birthday}"><br>
-			<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}"><br>
-			<button>変更内容の保存</button>
-
+			<input type="text" placeholder="名前" name="name" th:value="${customer.name}" class="mypageinput"><br>
+			<input type="text" placeholder="郵便番号" name="postal" th:value="${customer.postal}" class="mypageinput"><br>
+			<input type="text" placeholder="住所" name="address" th:value="${customer.address}" class="mypageinput"><br>
+			<input type="text" placeholder="電話番号" name="tel" th:value="${customer.tel}" class="mypageinput"><br>
+			<input type="text" placeholder="メールアドレス" name="email" th:value="${customer.email}" class="mypageinput"><br>
+			<input type="date" placeholder="誕生日" name="birthday" th:value="${customer.birthday}" class="mypageinput"><br>
+			<input type="text" placeholder="パスワード" name="password" th:value="${customer.password}" class="mypageinput"><br>
+			<div class="btndesign2">
+				<button>変更内容保存</button>
+			</div>
 		</form>
-		<a href="/reservations"><button>予約一覧へ</button></a>
-		<a href="/reviews"><button>口コミ一覧へ</button></a>
-		<form action="/mypage/customer/delete" method="post">
+		</div>
+		<div class="btndesign">
+			<a href="/reservations"><button>予約一覧へ</button></a>
+			<a href="/reviews"><button>口コミ一覧へ</button></a>
+			<form style="display: inline;" action="/mypage/customer/delete" method="post">
 			<button id="quit" onclick="return confirmQuit()">退会</button>
 		</form>
 		<script>
@@ -38,6 +42,9 @@
 				}
 				}
 		</script>
+		</div>
+		
+		
 
 
 <footer th:replace="footer">

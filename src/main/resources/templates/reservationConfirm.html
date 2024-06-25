@@ -8,7 +8,7 @@
 </head>
 <header th:replace="header"></header>
 <body>
-	ご予約商品
+	<h3>ご予約商品</h3>
 	<table class="table-design2">
 		<tr>
 			<thead>
@@ -23,7 +23,7 @@
 		</tr>
 		</thead>
 	</table>
-	<p>お客様情報入力</p>
+	<h3>お客様情報入力</h3>
 	<form method="post" th:action="@{/reserved/{planId}(planId=${plan.id})}">
 		<table class="table-design3">
 			<tr>
@@ -57,7 +57,9 @@
 		<input name="checkoutDate" type="hidden" th:value="${reservation.checkoutDate}">
 		<input name="roomCount" type="hidden" th:value="${reservation.roomCount}">
 		<input name="note" type="hidden" th:value="${reservation.note}">
-		<button>確定</button>
+		<div class="btndesign">
+			<button>確定</button>
+		</div>
 	</form>
 </body>
 

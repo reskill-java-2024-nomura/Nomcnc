@@ -8,6 +8,13 @@
 </head>
 <header th:replace="header"></header>
 <body>
+	<div class="img-box">
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	</div>
+	<br>
+	<h2>カテゴリー一覧</h2>
 	<div class="top">
 		<div th:each="category:${categories}" class="categoryall">
 			<form method="get" th:action="@{/hotels/{id}(id=${category.id})}">

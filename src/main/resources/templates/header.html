@@ -1,10 +1,13 @@
 <header>
 	<h1><a href="/top">Nomucnc</a></h1>
-	 <div class="header-list">
-        <ul>
-            <li><a href="/mypage">Mypage</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-    </div>
-	
+	<div class="header-list">
+		<ul th:if="${@account.name}!=null">
+			<li th:text="${@account.name}+' さんがログイン中'"></li>
+			<li><a href="/mypage">Mypage</a></li>
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+		<ul th:if="${@account.name}==null">
+			<li>ようこそ、ゲストさん</li>
+		</ul>
+	</div>
 </header>

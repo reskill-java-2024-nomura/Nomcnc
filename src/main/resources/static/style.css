@@ -55,6 +55,50 @@ footer {
 
 .top{}
 
+.table-design1 {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 700px;
+  margin:auto;
+  
+}
+.table-design1 tr {
+ background-color: #fff;
+}
+.table-design1 tr:nth-child(odd) {
+  background-color: papayawhip;
+}
+.table-design1 td {
+  padding: 1em;
+}
+
+.table-design2 {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  margin:auto;
+}
+.table-design2 th, .table-design2 td {
+  border: 2px solid #d2e8f1;
+  padding: 1em;
+}
+.table-design2 thead th {
+  background-color: #4d9bc1;
+  color: #fff;
+  border: 2px solid #4d9bc1;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.table-design2 thead th:last-of-type {
+  border-right: 2px solid #4d9bc1;
+}
+.table-design2 tbody th {
+  color: #4d9bc1;
+  font-weight: bold;
+  text-align: center;
+}
 
 button {
   border: none;

@@ -61,10 +61,26 @@ public class ReservationController {
 		Plan plan = planRepository.findById(planId).get();
 		model.addAttribute("plan", plan);
 
-		//roomCountによるエラーメッセージ出力
-		if (roomCount >= plan.getRoomCount()) {
+		//roomCountによるエラー出力
+		if (roomCount > plan.getRoomCount()) {
 			model.addAttribute("error", plan.getRoomCount() + 1 + "部屋以上予約できません。");
 			return "reservationInput";
+		}
+		//チェックインとチェックアウトによるエラー出力
+		else if (checkinDate.compareTo(checkoutDate) > 0) {
+			model.addAttribute("error", "チェックアウト日がチェックイン日より前です。");
+			return "reservationInput";
+		}
+		//今日の日付より過去の場合のエラー出力
+		else if (checkinDate.compareTo(reservationDate) < 0 || checkoutDate.compareTo(reservationDate) < 0) {
+			model.addAttribute("error", "選択した日付が過去の日付です。");
+			return "reservationInput";
+		}
+		//会員数が５件以上のエラー出力
+		List<Reservation> reservations = reservationRepository.findByCustomerId(account.getId());
+		if (reservations.size() > 5) {
+			model.addAttribute("error", "プラン予約可能数は最大５件までです。");
+			return "reservedList";
 		}
 		return "reservationConfirm";
 	}
@@ -96,13 +112,6 @@ public class ReservationController {
 		model.addAttribute("reservations", reservations);
 
 		return "reservedList";
-	}
-
-	@PostMapping("reservations/{id}/delete")
-	public String delete(
-			@PathVariable("id") Integer id) {
-		reservationRepository.deleteById(id);
-		return "redirect:/reservations";
 	}
 
 }

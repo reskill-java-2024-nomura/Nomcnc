@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>宿編集画面</title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+	<header th:replace="adminHeader"></header>
 <body>
 <h1>宿情報編集</h1>
 	<form th:action="@{/admin/hotels/{hotelId}/edit(hotelId = ${hotel.id})}" method="post">
-		<table border="1">
+		<table class="table-design1">
 			<tr>
 				<th>ID</th>
 				<td th:text="${hotel.id}"></td>
@@ -15,9 +17,9 @@
 			<tr>
 				<th>カテゴリー</th>
 				<td>
-		<select name="categoryId" placeholder="カテゴリー名">
-			 <option th:value=null></option>
-       		<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+		<select name="categoryId">
+       		<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+       		th:selected="${category.id}==${hotel.id}"></option>
     	</select><br>
        			</td>
 			</tr>

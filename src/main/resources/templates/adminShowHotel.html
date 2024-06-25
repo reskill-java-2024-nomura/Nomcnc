@@ -8,7 +8,6 @@
 <header th:replace="adminHeader"></header>
 <body>
 	
-<a href = "/admin/hotels" align = "left">宿一覧に戻る</a>
 <h1>宿詳細</h1>
 <table class="table-design1">
 	<tr>
@@ -37,11 +36,10 @@
 
 <h2>プラン一覧</h2>
 
-	<a th:href="@{/admin/hotels/{hotelId}/plans/add(hotelId=${hotel.id})}">プラン新規登録</a>
-
 
 <table class="table-design2">
 		<tr>
+			<thead>
 			<th>ID</th>
 			<th>プラン名</th>
 			<th>金額</th>
@@ -49,6 +47,7 @@
 			<th>備考</th>
 			<th>編集</th>
 			<th>削除</th>
+			</thead>
 		</tr>
 		<tr th:each="plan:${plans}">
 			<td th:text="${plan.id}"></td>
@@ -70,6 +69,10 @@
 		</td>
 		</tr>
 	</table>
+	<div class="btndesign">
+		<a th:href="@{/admin/hotels/{hotelId}/plans/add(hotelId=${hotel.id})}"><button>プラン新規登録</button></a>
+		<a href = "/admin/hotels"><button>宿一覧に戻る</button></a>
+	</div>
 	<script>
 		function confirmDelete() {
 			var message = "本当に削除しますか？";

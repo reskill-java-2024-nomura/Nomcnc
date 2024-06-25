@@ -10,8 +10,9 @@
 <body>
 	<h1>予約一覧</h1>
 	<span th:text ="${error}"></span>
-	<table border="1">
+	<table class="table-design2">
 		<tr>
+			<thead>
 			<td>ID</td>
 			<td>予約プラン</td>
 			<td>部屋数</td>
@@ -20,6 +21,7 @@
 			<td>チェックアウト</td>
 			<td>合計価格</td>
 			<td></td>
+			</thead>
 		</tr>
 		<tr th:each="reservation:${reservations}">
 			<td th:text="${reservation.id}"></td>

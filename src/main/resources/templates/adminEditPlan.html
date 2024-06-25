@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
 <body>
 	<h1>プラン更新</h1>
 		<form th:action="@{/admin/plans/{planId}/edit(planId=${plan.id})}" method="post">
-		<table border="1">
+		<table class="table-design1">
 			<tr>
 				<th>プランID</th>
 				<td>[[${plan.id}]]</td>
@@ -30,7 +32,9 @@
 			</tr>
 			<input type="hidden" name="hotelId" th:value="${plan.hotelId}">
 		</table>
-		<button>更新</button>
+		<div class="btndesign">
+			<button>更新</button>
+		</div>
 		</form>
 </body>
 </html>

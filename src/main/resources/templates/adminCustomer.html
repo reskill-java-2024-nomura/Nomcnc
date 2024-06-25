@@ -1,59 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>会員一覧</title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="adminHeader"></header>
+
 <body>
 	<h1>顧客一覧</h1>
-	名前検索：
-	<form action="/admin/customers" method="get">
-		<input type="text" name="keyword" th:value="${keyword}">
-		<button>検索</button>
-	</form><br>
-	電話番号検索：
-	<form action="/admin/customers" method="get">
-		<input type="text" name="keywordphone" th:value="${keywordphone}">
-		<button>検索</button>
-	</form>
+	<div style="display: inline-block;" class="btndesign">
+		<div>
+			<form action="/admin/customers" method="get">
+				<input style="padding: 0.7vw;" type="text" name="keyword" th:value="${keyword}" placeholder="名前検索">
+				<button>検索</button>
+			</form>
+		</div>
+		<div>
+			<form action="/admin/customers" method="get">
+				<input style="padding: 0.7vw;" type="text" name="keywordphone" th:value="${keywordphone}" placeholder="電話番号検索">
+				<button>検索</button>
+			</form>
+		</div>
+	</div>
 	<br>
-		<table border="1">
-			<tr>
-				<th>会員ID</th>
-				<th>名前</th>
-				<th>郵便番号</th>
-				<th>住所</th>
-				<th>電話番号</th>
-				<th>メールアドレス</th>
-				<th>生年月日</th>
-				<th>入会年月日</th>
-				<th>退会年月日</th>
-				<th>パスワード</th>
-				<th>編集</th>
-				<th>削除</th>
-			</tr>
-			<tr th:each="customer:${customers}">
-				<td>[[${customer.id}]]</td>
-				<td>[[${customer.name}]]</td>
-				<td>[[${customer.postal}]]</td>
-				<td>[[${customer.address}]]</td>
-				<td>[[${customer.tel}]]</td>
-				<td>[[${customer.email}]]</td>
-				<td>[[${customer.birthday}]]</td>
-				<td>[[${customer.registerDate}]]</td>
-				<td>[[${customer.withdrawDate}]]</td>
-				<td>[[${customer.password}]]</td>
-				<td>
-					<form th:action="@{/admin/customers/{customerid}/edit(customerid=${customer.id})}" method="get">
-						<button>編集</button>
-					</form>
-				</td>
-				<td>
-				<form th:action="@{/admin/customers/{customerid}/delete(customerid=${customer.id})}" method="post">
-					<button>削除</button>
+	<table class="table-design3">
+		<tr>
+			<th>会員ID</th>
+			<th>名前</th>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>電話番号</th>
+			<th>メールアドレス</th>
+			<th>生年月日</th>
+			<th>入会年月日</th>
+			<th>退会年月日</th>
+			<th>パスワード</th>
+			<th>編集</th>
+			<th>削除</th>
+		</tr>
+		<tr th:each="customer:${customers}">
+			<td>[[${customer.id}]]</td>
+			<td>[[${customer.name}]]</td>
+			<td>[[${customer.postal}]]</td>
+			<td>[[${customer.address}]]</td>
+			<td>[[${customer.tel}]]</td>
+			<td>[[${customer.email}]]</td>
+			<td>[[${customer.birthday}]]</td>
+			<td>[[${customer.registerDate}]]</td>
+			<td>[[${customer.withdrawDate}]]</td>
+			<td>[[${customer.password}]]</td>
+			<td>
+				<form th:action="@{/admin/customers/{customerid}/edit(customerid=${customer.id})}" method="get">
+					<button>編集</button>
 				</form>
 			</td>
-			</tr>
-		</table>
+			<td>
+				<form th:action="@{/admin/customers/{customerid}/delete(customerid=${customer.id})}" method="post">
+					<button onclick="return confirmDelete()">削除</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<script>
+		function confirmDelete() {
+			var message = "本当に削除しますか？";
+			var checked = confirm(message);
+			if (checked) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
 </body>
+
 </html>

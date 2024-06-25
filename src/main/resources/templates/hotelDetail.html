@@ -9,7 +9,7 @@
 <header th:replace="header"></header>
 
 <body>
-	[[${hotel.name}]]
+	<h2>[[${hotel.name}]]</h2>
 	<table class="table-design1">
 		<tr>
 			<th>NO</th>
@@ -28,10 +28,12 @@
 			<td><a th:href="@{/reservation/input/{id}(id=${plan.id})}"><button>予約</button></a></td>
 		</tr>
 	</table>
-	口コミ一覧
+	<h2>口コミ一覧</h2>
+	<div class="btndesign">
 	<form method="get" th:action="@{/reviews/{hotelId}/post(hotelId=${hotel.id})}">
 		<button>新規投稿</button>
 	</form>
+	</div>
 	<table class="table-design2">
 		<tr>
 			<thead>

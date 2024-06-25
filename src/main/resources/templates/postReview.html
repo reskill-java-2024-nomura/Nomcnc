@@ -4,29 +4,53 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="header"></header>
 
 <body>
 	<h1>[[${hotel.name}]]</h1>
-	<form method="post" th:action="@{reviews/{hotelId}/post(hotelId=${hotel.id})}">
-		<table border="1">
+	<form method="post" th:action="@{/reviews/{hotelId}/post(hotelId=${hotel.id})}">
+		<table class="table-design2">
 			<tr>
-				<th>プラン名</th>
-				<th>年代</th>
-				<th>利用時期</th>
-				<th>滞在日数</th>
-				<th>点数</th>
-				<th>コメント</th>
+				<td>プラン名</td>
+				<td>
+					<select name="planId">
+						<option th:each="plan:${plans}" th:value="${plan.id}" th:text="${plan.name}">
+						</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>年代</td>
+				<td><input name="userAge" type="number" placeholder="年代(10単位)">代</td>
+			</tr>
+			<tr>
+				<td>利用時期</td>
+				<td><input name="stayMonth" type="number" placeholder="利用時期">月</td>
+
+			</tr>
+			<tr>
+				<td>滞在日数</td>
+				<td><input name="stayDays" type="number" placeholder="滞在日数">日間</td>
+			</tr>
+			<tr>
+				<td>点数</td>
+				<td>
+					<select name="point">
+						<option th:each="star : ${#numbers.sequence(1, 5)}" th:value="${star}"
+							th:text="${'★'.repeat(star)}">
+						</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>コメント</td>
+				<td><input name="review" type="text" placeholder="口コミ">
+				</td>
 			</tr>
 		</table>
+		<button>投稿</button>
 	</form>
 </body>
 

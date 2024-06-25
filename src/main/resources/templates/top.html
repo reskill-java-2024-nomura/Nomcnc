@@ -4,16 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link href="style.css" rel="stylesheet">
 </head>
 <header th:replace="header"></header>
 <body>
-	トップページ
-	<div th:each="category:${categories}">
-		<form method="get" th:action="@{/hotels/{id}(id=${category.id})}">
-			<button>[[${category.name}]]</button>
-	</form>
+	<div class="top">
+		<div th:each="category:${categories}" class="categoryall">
+			<form method="get" th:action="@{/hotels/{id}(id=${category.id})}">
+				<button>[[${category.name}]]</button>
+		</form>
+		</div>
 	</div>
-	<a href="/mypage">マイページへ</a>
 </body>
 <footer th:replace="footer"></footer>
 </html>

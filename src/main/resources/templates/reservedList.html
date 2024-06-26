@@ -14,6 +14,7 @@
 		<tr>
 			<thead>
 			<td>ID</td>
+			<td>ホテル名</td>
 			<td>予約プラン</td>
 			<td>部屋数</td>
 			<td>予約日</td>
@@ -25,6 +26,7 @@
 		</tr>
 		<tr th:each="reservation:${reservations}">
 			<td th:text="${reservation.id}"></td>
+			<td th:text="${reservation.hotelName}"></td>
 			<td th:text="${reservation.planName}"></td>
 			<td th:text="${reservation.roomCount}"></td>
 			<td th:text="${reservation.reservationDate}"></td>

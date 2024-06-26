@@ -28,6 +28,8 @@ public class ViewReservation {
 	private Integer payment;
 	@Column(name = "plan_name")
 	private String planName;
+	@Column(name = "hotel_name")
+	private String hotelName;
 
 	public Integer getId() {
 		return id;
@@ -55,6 +57,10 @@ public class ViewReservation {
 
 	public String getPlanName() {
 		return planName;
+	}
+
+	public String getHotelName() {
+		return hotelName;
 	}
 
 	public LocalDate getReservationDate() {

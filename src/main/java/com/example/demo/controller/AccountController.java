@@ -52,6 +52,10 @@ public class AccountController {
 			String msg = "マイページを表示するにはログインしてください";
 			model.addAttribute("msg", msg);
 		}
+		if (error.equals("comment")) {
+			String msg = "コメントを投稿するにはログインしてください";
+			model.addAttribute("msg", msg);
+		}
 		return "login";
 
 	}

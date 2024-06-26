@@ -8,18 +8,25 @@
 <header th:replace="adminHeader"></header>
 <body>
 <h1>宿一覧</h1>
-	<div style="display: inline-block;" class="btndesign">
-		<form action="/admin/hotels" method="get">
-			<input style="padding: 0.7vw;" type="text" name="keyword" placeholder="宿名検索" th:value="${keyword}">
-			<input style="padding: 0.7vw;" type="text" name="keywordAddress" placeholder="住所検索" th:value="${keywordAddress}">
-			<select style="padding: 0.7vw;" name="categoryId" placeholder="カテゴリー名">
-				<option th:value= null ></option>
-       			<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
-        		th:selected="${category.id}==${categoryId}"></option>
-    		</select>
-			<button>検索</butt>
-		</form>
-  </div>
+
+<form action="/admin/hotels" method="get">
+	<input type="text" name="keyword" placeholder="宿名" th:value="${keyword}">
+	<input type="text" name="keywordAddress" placeholder="住所" th:value="${keywordAddress}">
+	<select name="categoryId" placeholder="カテゴリー名">
+		<option th:value= null ></option>
+       	<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+        th:selected="${category.id}==${categoryId}"></option>
+    </select>
+    <span class="btndesign3">
+		<button>検索</button>
+	</span>
+</form>
+<div class="btndesign">
+<form action="/admin/hotels/add" method="get">
+	<button>新規登録</button>
+</form>
+</div>
+
 
 <table  class="table-design1">
 		<tr>

@@ -17,7 +17,9 @@
        	<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
         th:selected="${category.id}==${categoryId}"></option>
     </select>
-	<button>検索</button>
+    <span class="btndesign3">
+		<button>検索</button>
+	</span>
 </form>
 <div class="btndesign">
 <form action="/admin/hotels/add" method="get">

@@ -13,7 +13,9 @@
 	<form th:action="@{/hotels/{id} (id = ${category.id})}" method="get">
 		<input type="text" name="keyword" placeholder="宿名" th:value="${keyword}">
 		<input type="text" name="keywordAddress" placeholder="住所" th:value="${keywordAddress}">
-		<button>検索</button>
+		<span class="btndesign3">
+			<button>検索</button>
+		</span>
 	</form>
 	
 	<table class="table-design1">

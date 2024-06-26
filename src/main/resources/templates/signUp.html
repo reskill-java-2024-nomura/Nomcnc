@@ -9,6 +9,7 @@
 <header th:replace="header"></header>
 <body>
 	<h1>新規登録</h1>
+	<div class="mypage" padding ="20px">
 	<form action="/signin" method="post"><br>
 		<input type="text" placeholder="名前" name="name"><br>
 		<input type="text" placeholder="郵便番号" name="postal"><br>
@@ -17,8 +18,11 @@
 		<input type="text" placeholder="メールアドレス" name="email"><br>
 		<input type="date" placeholder="誕生日" name="birthday"><br>
 		<input type="text" placeholder="パスワード" name="password"><br>
+		<div class="btndesign2">
 		<button>新規登録</button>
+		</div>
 	</form>
+	</div>
 </body>
 
 </html>

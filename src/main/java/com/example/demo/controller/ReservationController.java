@@ -78,9 +78,9 @@ public class ReservationController {
 		}
 		//会員数が５件以上のエラー出力
 		List<Reservation> reservations = reservationRepository.findByCustomerId(account.getId());
-		if (reservations.size() > 5) {
-			model.addAttribute("error", "プラン予約可能数は最大５件までです。");
-			return "reservedList";
+		if (reservations.size() >= 5) {
+			model.addAttribute("error", "あなたのプラン予約上限数を超えています。(最大５件)");
+			return "reservationInput";
 		}
 		return "reservationConfirm";
 	}

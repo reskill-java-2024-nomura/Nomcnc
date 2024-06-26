@@ -190,6 +190,14 @@ h2 {
 	margin-top: 30px;
 }
 
+.btndesign3 button {
+	background-color: rgb(239, 222, 218);
+	border: 1px solid transparent;
+	border-radius: 5px;
+	width: 80px;
+	height: 30px;
+}
+
 .mypage{
 	background-color: rgb(239, 222, 218);
 	width: 400px;

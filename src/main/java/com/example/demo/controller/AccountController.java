@@ -153,7 +153,7 @@ public class AccountController {
 	@GetMapping("/reviews")
 	public String myReview(
 			Model model) {
-		List<ViewReview> reviews = viewReviewRepository.findByCustomerId(account.getId());
+		List<ViewReview> reviews = viewReviewRepository.findByCustomerIdOrderByIdAsc(account.getId());
 		model.addAttribute("reviews", reviews);
 
 		return "myReview";

@@ -37,10 +37,21 @@
 				<form method="get" th:action="@{/reviews/{id}/edit(id=${review.id})}"><button>編集</button></form>
 			</td>
 			<td>
-				<form method="post" th:action="@{/reviews/{id}/delete(id=${review.id})}"><button>削除</button></form>
+				<form method="post" th:action="@{/reviews/{id}/delete(id=${review.id})}"><button onclick="return confirmDelete()">削除</button></form>
 			</td>
 		</tr>
 	</table>
+	<script>
+			function confirmDelete() {
+				var message = "本当に削除しますか？";
+				var checked = confirm(message);
+				if (checked) {
+					return true;
+				} else {
+					return false;
+				}
+				}
+		</script>
 </body>
 
 </html>

@@ -10,5 +10,7 @@ public interface ViewReviewRepository extends JpaRepository<ViewReview, Integer>
 
 	List<ViewReview> findByHotelIdOrderByIdAsc(Integer hotelId);
 
+	List<ViewReview> findByCustomerIdOrderByIdAsc(Integer customerId);
+
 	List<ViewReview> findByCustomerId(Integer customerId);
 }

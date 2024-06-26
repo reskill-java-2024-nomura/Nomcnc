@@ -13,6 +13,7 @@ body {
   flex-direction: column;
   text-align: center;
   background-color: rgb(252, 252, 245);
+  margin-bottom: 50px;
 }
 
 a{
@@ -58,9 +59,12 @@ footer {
   display: flex;
   align-items: center;
   position: fixed;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
+footer p{
+	text-align: center;
+}
 
 .table-design1 {
   border-collapse: collapse;

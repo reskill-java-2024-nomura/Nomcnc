@@ -18,7 +18,11 @@
 	<div class="top">
 		<div th:each="category:${categories}" class="categoryall">
 			<form method="get" th:action="@{/hotels/{id}(id=${category.id})}">
-				<button>[[${category.name}]]</button>
+				<button>
+					<font color="#bc8f8f">
+					[[${category.name}]]
+					</font>
+				</button>
 		</form>
 		</div>
 	</div>

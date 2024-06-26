@@ -13,18 +13,20 @@
 	<table class="table-design2">
 		<tr>
 			<thead>
-			<td>ID</td>
-			<td>予約プラン</td>
-			<td>部屋数</td>
-			<td>予約日</td>
-			<td>チェックイン</td>
-			<td>チェックアウト</td>
-			<td>合計価格</td>
-			<td></td>
+			<th>ID</th>
+			<th>ホテル名</th>
+			<th>予約プラン</th>
+			<th>部屋数</th>
+			<th>予約日</th>
+			<th>チェックイン</th>
+			<th>チェックアウト</th>
+			<th>合計価格</th>
+			<th></th>
 			</thead>
 		</tr>
 		<tr th:each="reservation:${reservations}">
 			<td th:text="${reservation.id}"></td>
+			<td th:text="${reservation.hotelName}"></td>
 			<td th:text="${reservation.planName}"></td>
 			<td th:text="${reservation.roomCount}"></td>
 			<td th:text="${reservation.reservationDate}"></td>

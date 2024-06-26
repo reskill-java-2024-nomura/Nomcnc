@@ -99,7 +99,7 @@ class HotelController {
 		List<Plan> plans = planRepository.findByHotelId(id);
 		model.addAttribute("plans", plans);
 
-		List<ViewReview> reviews = viewReviewRepository.findByHotelId(id);
+		List<ViewReview> reviews = viewReviewRepository.findByHotelIdOrderByIdAsc(id);
 		model.addAttribute("reviews", reviews);
 
 		return "hotelDetail";

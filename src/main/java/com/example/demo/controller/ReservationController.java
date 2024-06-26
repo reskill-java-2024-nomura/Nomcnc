@@ -108,10 +108,18 @@ public class ReservationController {
 	@GetMapping("/reservations")
 	public String getReserved(
 			Model model) {
-		List<ViewReservation> reservations = viewReservationRepository.findByCustomerId(account.getId());
+		List<ViewReservation> reservations = viewReservationRepository.findByCustomerIdOrderByIdAsc(account.getId());
 		model.addAttribute("reservations", reservations);
 
 		return "reservedList";
+	}
+
+	@PostMapping("/reservations/{id}/delete")
+	public String deleteReserved(
+			@PathVariable("id") Integer id) {
+		reservationRepository.deleteById(id);
+
+		return "redirect:/reservations";
 	}
 
 }

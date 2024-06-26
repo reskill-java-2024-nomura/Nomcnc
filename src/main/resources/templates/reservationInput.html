@@ -24,7 +24,7 @@
 		  </thead>
 	</table>
 	<h3>お客様情報入力</h3>
-	<span th:text ="${error}"></span>
+	<span th:text ="${error}" style="color:red"></span>
 	<form method="post" th:action="@{/reservation/confirm/{planId}(planId=${plan.id})}">
 		<table class="table-design3">
 			<tr>

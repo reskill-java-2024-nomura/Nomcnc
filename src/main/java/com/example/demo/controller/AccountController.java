@@ -52,6 +52,10 @@ public class AccountController {
 			String msg = "マイページを表示するにはログインしてください";
 			model.addAttribute("msg", msg);
 		}
+		if (error.equals("comment")) {
+			String msg = "コメントを投稿するにはログインしてください";
+			model.addAttribute("msg", msg);
+		}
 		return "login";
 
 	}
@@ -149,7 +153,7 @@ public class AccountController {
 	@GetMapping("/reviews")
 	public String myReview(
 			Model model) {
-		List<ViewReview> reviews = viewReviewRepository.findByCustomerId(account.getId());
+		List<ViewReview> reviews = viewReviewRepository.findByCustomerIdOrderByIdAsc(account.getId());
 		model.addAttribute("reviews", reviews);
 
 		return "myReview";

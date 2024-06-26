@@ -70,10 +70,12 @@ select
    r.checkout_date,
    r.room_count,
    r.room_count*p.price as payment,
-   p.name as plan_name
+   p.name as plan_name,
+   h.name as hotel_name
 from
    reservations r
 join plans p on r.plan_id = p.id
+join hotels h on p.hotel_id=h.id
 ;
 -- 口コミテーブル
 CREATE TABLE reviews

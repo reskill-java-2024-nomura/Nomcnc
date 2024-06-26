@@ -8,7 +8,9 @@ import com.example.demo.entity.ViewReview;
 
 public interface ViewReviewRepository extends JpaRepository<ViewReview, Integer> {
 
-	List<ViewReview> findByHotelId(Integer hotelId);
+	List<ViewReview> findByHotelIdOrderByIdAsc(Integer hotelId);
+
+	List<ViewReview> findByCustomerIdOrderByIdAsc(Integer customerId);
 
 	List<ViewReview> findByCustomerId(Integer customerId);
 }

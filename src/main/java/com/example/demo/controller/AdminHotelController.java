@@ -59,6 +59,7 @@ public class AdminHotelController {
 		model.addAttribute("hotels", hotels);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("keywordAddress", keywordAddress);
+		model.addAttribute("categoryId", categoryId);
 		return "adminShowHotels";
 	}
 

@@ -4,36 +4,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link href="/style.css" rel="stylesheet">
 </head>
+<header th:replace="header"></header>
 
 <body>
-	<header th:replace="header"></header>
 	<form method="post" th:action="@{/reviews/{id}/edit(id=${review.id})}">
-		<table border="1">
+		<table class="table-design2" style="margin-top: 30vh;">
 			<tr>
-				<th>ホテル名</th>
-				<th>プラン名</th>
-				<th>年代</th>
-				<th>利用時期</th>
-				<th>滞在日数</th>
-				<th>点数</th>
-				<th>コメント</th>
+				<thead>
+					<th>ホテル名</th>
+					<th>プラン名</th>
+					<th>年代</th>
+					<th>利用時期</th>
+					<th>滞在日数</th>
+					<th>点数</th>
+					<th>コメント</th>
+				</thead>
 			</tr>
 			<tr>
 				<td>[[${review.hotelName}]]</td>
 				<td>[[${review.planName}]]</td>
 				<td><select name="userAge">
-						<option th:each="num : ${#numbers.sequence(10, 90, 10)}" th:value="${num}"
-							th:text="${num}" th:selected="${num}==${review.userAge}">
+						<option th:each="num : ${#numbers.sequence(10, 90, 10)}" th:value="${num}" th:text="${num}"
+							th:selected="${num}==${review.userAge}">
 						</option>
-					</select></td>
+					</select>　代</td>
 				<td><select name="stayMonth">
-						<option th:each="num : ${#numbers.sequence(1, 12)}" th:value="${num}"
-						 th:text="${num}" th:selected="${num}==${review.stayMonth}">
+						<option th:each="num : ${#numbers.sequence(1, 12)}" th:value="${num}" th:text="${num}"
+							th:selected="${num}==${review.stayMonth}">
 						</option>
-					</select>
+					</select>　月
 				</td>
-				<td><input name="stayDays" th:value="${review.stayDays}">日間</td>
+				<td><input name="stayDays" th:value="${review.stayDays}" style="width:2.5vw;">　日間</td>
 				<td>
 					<select name="point">
 						<option th:each="star, count : ${#numbers.sequence(1, 5)}" th:value="${star}"
@@ -41,10 +44,12 @@
 						</option>
 					</select>
 				</td>
-				<td><input name="review" th:value="${review.review}"></input>
+				<td><input name="review" th:value="${review.review}" type="text" style="padding: 2vh;"></input>
 			</tr>
 		</table>
-		<button>登録</button>
+		<div class="btndesign">
+			<button>登録</button>
+		</div>
 	</form>
 </body>
 

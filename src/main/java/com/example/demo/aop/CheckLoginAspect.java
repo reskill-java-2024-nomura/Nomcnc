@@ -32,4 +32,13 @@ public class CheckLoginAspect {
 		}
 		return jp.proceed();
 	}
+
+	@Around("execution(* com.example.demo.controller.HotelController.post(..))")
+	public Object checkLogincomment(
+			ProceedingJoinPoint jp) throws Throwable {
+		if (account == null || account.getName() == null || account.getName().length() == 0) {
+			return "redirect:/login?error=comment";
+		}
+		return jp.proceed();
+	}
 }
